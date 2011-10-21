@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device_esteem.mk
+    $(LOCAL_DIR)/esteem.mk
