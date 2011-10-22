@@ -3,11 +3,10 @@ USE_CAMERA_STUB := true
 # inherit from the proprietary version
 -include vendor/lge/esteem/BoardConfigVendor.mk
 
-## ARMv7 Processor rev 2 (v7l)
 TARGET_NO_BOOTLOADER := true
+
+## ARMv7 Processor rev 2 (v7l)
 TARGET_BOARD_PLATFORM := msm8k
-
-
 TARGET_CPU_ABI := armeabi
 TARGET_CPU_ABI2 := armeabi-v7a
 TARGET_ARCH_VARIANT := armv7-a-neon
@@ -27,6 +26,9 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 TARGET_USERIMAGES_USE_EXT4 := true
 USE_EXT4 := true
 BOARD_HAS_SDCARD_INTERNAL := true
+
+# custom lun0 file for USB Mass Storage
+BOARD_UMS_LUNFILE := /sys/devices/platform/s3c-usbgadget/gadget/lun0/file
 
 TARGET_PREBUILT_KERNEL := device/lge/esteem/kernel
 
