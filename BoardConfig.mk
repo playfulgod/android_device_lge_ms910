@@ -28,7 +28,7 @@ USE_EXT4 := true
 BOARD_HAS_SDCARD_INTERNAL := true
 
 # custom lun0 file for USB Mass Storage
-BOARD_UMS_LUNFILE := /sys/devices/platform/s3c-usbgadget/gadget/lun0/file
+BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
 
 TARGET_PREBUILT_KERNEL := device/lge/esteem/kernel
 
