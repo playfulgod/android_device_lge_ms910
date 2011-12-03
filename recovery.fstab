@@ -1,6 +1,6 @@
 # mount point	fstype		device			[device2]
 
-/misc		emmc		/dev/block/mmcblk0
+##/misc		emmc		/dev/block/mmcblk0
 ##/misc		emmc		/dev/block/mmcblk0p8
 /boot		emmc		/dev/block/mmcblk0p9
 /system		ext4		/dev/block/mmcblk0p12
