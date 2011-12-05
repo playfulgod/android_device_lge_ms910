@@ -30,8 +30,6 @@ BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk1
 
 BOARD_HAS_NO_MISC_PARTITON := true
 
-TARGET_USERIMAGES_USE_EXT4 := true
-USE_EXT4 := true
 BOARD_HAS_SDCARD_INTERNAL := true
 
 # custom lun0 file for USB Mass Storage
