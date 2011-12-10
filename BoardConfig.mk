@@ -37,8 +37,9 @@ BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun2/file
 
 TARGET_PREBUILT_KERNEL := device/lge/esteem/kernel
 
+# Recovery
+TARGET_PREBUILT_RECOVERY_KERNEL := device/lge/esteem/recovery/recovery_kernel
 BOARD_CUSTOM_GRAPHICS := ../../../device/lge/esteem/recovery/graphics.c
-
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Use this flag if the board has a ext4 partition larger than 2gb
