@@ -9,5 +9,10 @@ ALL_PREBUILT += $(file)
 $(file) : $(LOCAL_PATH)/recovery/postrecoveryboot.sh | $(ACP)
 	$(transform-prebuilt-to-target)
 
+file := $(TARGET_ROOT_OUT)/init.bryce.rc
+ALL_PREBUILT += $(file)
+$(file) : $(LOCAL_PATH)/init.bryce.rc | $(ACP)
+	$(transform-prebuilt-to-target)
+
 # include the non-open-source counterpart to this file
 -include vendor/lge/esteem/AndroidBoardVendor.mk

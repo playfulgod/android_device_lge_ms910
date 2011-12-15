@@ -1,5 +1,8 @@
 USE_CAMERA_STUB := true
 
+# inherit from common msm7x30 device
+#-include device/htc/msm7x30-common/BoardConfigCommon.mk
+
 # inherit from the proprietary version
 -include vendor/lge/esteem/BoardConfigVendor.mk
 
@@ -33,7 +36,8 @@ BOARD_HAS_NO_MISC_PARTITON := true
 BOARD_HAS_SDCARD_INTERNAL := true
 
 # custom lun0 file for USB Mass Storage
-BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun2/file
+BOARD_UMS_LUNFILE :=  /sys/devices/platform/usb_mass_storage/lun0/file
+#BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun2/file
 
 TARGET_PREBUILT_KERNEL := device/lge/esteem/kernel
 
