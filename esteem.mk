@@ -23,8 +23,6 @@ PRODUCT_COPY_FILES += \
 
 $(call inherit-product, build/target/product/full.mk)
 
-# common msm7x30 configs
-#$(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_esteem

@@ -1,15 +1,12 @@
 USE_CAMERA_STUB := true
 
-# inherit from common msm7x30 device
--include device/htc/msm7x30-common/BoardConfigCommon.mk
-
 # inherit from the proprietary version
 -include vendor/lge/esteem/BoardConfigVendor.mk
 
 TARGET_NO_BOOTLOADER := true
 
 ## ARMv7 Processor rev 2 (v7l)
-TARGET_BOARD_PLATFORM := msm7k
+TARGET_BOARD_PLATFORM := msm7x30
 TARGET_CPU_ABI := armeabi
 TARGET_CPU_ABI2 := armeabi-v7a
 TARGET_ARCH_VARIANT := armv7-a-neon
@@ -17,7 +14,8 @@ TARGET_BOOTLOADER_BOARD_NAME := esteem
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 
-BOARD_KERNEL_CMDLINE := console=ttyMSM1 androidboot.hardware=bryce
+#BOARD_KERNEL_CMDLINE := console=ttyMSM1 androidboot.hardware=qcom
+BOARD_KERNEL_CMDLINE := no_console_suspend=1
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_PAGE_SIZE := 0x00000800
 
@@ -36,6 +34,7 @@ BOARD_HAS_NO_MISC_PARTITON := true
 BOARD_HAS_SDCARD_INTERNAL := true
 
 # custom lun0 file for USB Mass Storage
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun
 BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun2/file
 
 TARGET_PREBUILT_KERNEL := device/lge/esteem/kernel
