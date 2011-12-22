@@ -1,3 +1,9 @@
 #
 #build props for LG Esteem
 #
+ro.secure=0
+ro.allow.mock.location=0
+ro.debuggable=1
+persist.service.adb.enable=1
+EXTERNAL_STORAGE_MOUNT=/mnt/sdcard
+EXTERNAL_ADD_STORAGE_MOUNT=/mnt/sdcard/_ExternalSD

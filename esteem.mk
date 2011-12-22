@@ -10,7 +10,8 @@ DEVICE_PACKAGE_OVERLAYS += device/lge/esteem/overlay
 
 # Copy files to target...
 #PRODUCT_COPY_FILES += \
-#	device/lge/esteem/init.bryce.rc:root/init.bryce.rc 
+      device/lge/esteem/init.bryce.rc:root/init.bryce.rc \
+      device/lge/esteem/recovery/rmt_storage:system/bin/rmt_storage
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := device/lge/esteem/kernel
@@ -23,6 +24,8 @@ PRODUCT_COPY_FILES += \
 
 $(call inherit-product, build/target/product/full.mk)
 
+# common msm7x30 configs
+$(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_esteem

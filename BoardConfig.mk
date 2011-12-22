@@ -3,6 +3,9 @@ USE_CAMERA_STUB := true
 # inherit from the proprietary version
 -include vendor/lge/esteem/BoardConfigVendor.mk
 
+# inherit from common msm7x30 device
+-include device/htc/msm7x30-common/BoardConfigCommon.mk
+
 TARGET_NO_BOOTLOADER := true
 
 ## ARMv7 Processor rev 2 (v7l)
@@ -14,8 +17,7 @@ TARGET_BOOTLOADER_BOARD_NAME := esteem
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 
-#BOARD_KERNEL_CMDLINE := console=ttyMSM1 androidboot.hardware=qcom
-BOARD_KERNEL_CMDLINE := no_console_suspend=1
+BOARD_KERNEL_CMDLINE := console=ttyMSM1 androidboot.hardware=bryce
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_PAGE_SIZE := 0x00000800
 
