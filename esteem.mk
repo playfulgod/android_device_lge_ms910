@@ -10,8 +10,7 @@ DEVICE_PACKAGE_OVERLAYS += device/lge/esteem/overlay
 
 # Copy files to target...
 #PRODUCT_COPY_FILES += \
-      device/lge/esteem/init.bryce.rc:root/init.bryce.rc \
-      device/lge/esteem/recovery/rmt_storage:system/bin/rmt_storage
+      device/lge/esteem/init.bryce.rc:root/init.bryce.rc 
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := device/lge/esteem/kernel

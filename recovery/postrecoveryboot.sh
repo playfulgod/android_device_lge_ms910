@@ -7,8 +7,8 @@
 
 # Ignore the bootloader's message to wipe data. We dont want to wipe
 # every time we launch recovery.
-#touch /tmp/.ignorebootmessage
-#echo 'version 0.1-pr0' > /tmp/version
+touch /tmp/.ignorebootmessage
+echo 'version 0.1-pr0' > /tmp/version
 
 # Next, we MUST reset the bootloader command, else we'll be stuck in
 # recovery purgatory.

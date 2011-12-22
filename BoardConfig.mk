@@ -43,8 +43,11 @@ TARGET_PREBUILT_KERNEL := device/lge/esteem/kernel
 
 # Recovery
 TARGET_PREBUILT_RECOVERY_KERNEL := device/lge/esteem/recovery/recovery_kernel
+TARGET_RECOVERY_INITRC := device/lge/esteem/recovery/recovery.rc
 BOARD_CUSTOM_GRAPHICS := ../../../device/lge/esteem/recovery/graphics.c
 BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_USERIMAGES_USE_EXT4 := true
+#BOARD_RECOVERY_HANDLES_MOUNT := true
 
 # Use this flag if the board has a ext4 partition larger than 2gb
 #BOARD_HAS_LARGE_FILESYSTEM := true

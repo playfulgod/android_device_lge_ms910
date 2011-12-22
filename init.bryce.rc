@@ -28,6 +28,37 @@
 on boot-pause
     exec system/bin/battery_charging
 
+    #on fs
+on early-fs
+	write /dev/bootprog 1
+	# mount /system
+	mkdir /system
+	#devwait /dev/block/mmcblk0p12
+	wait /dev/block/mmcblk0p12
+	mount ext4 /dev/block/mmcblk0p12 /system ro -o data=ordered
+	
+	# mount /data
+	mkdir /data 0771 system system
+	#devwait /dev/block/mmcblk0p13
+	mount ext4 /dev/block/mmcblk0p13 /data nosuid nodev -o data=ordered
+	
+	# mount /cache
+	mkdir /cache 0771 system system
+	#devwait /dev/block/mmcblk0p6
+	mount ext4 /dev/block/mmcblk0p6 /cache nosuid nodev -o data=ordered
+	
+	# mount /persist
+	mkdir /persist 0771 system system
+	#devwait /dev/block/mmcblk0p5
+	mount ext4 /dev/block/mmcblk0p5 /persist nosuid nodev -o data=ordered
+	
+	# mount internal SD card
+	mkdir /mnt 0775 root system
+	mkdir /mnt/sdcard 0775 system system
+	#devwait /dev/block/mmcblk0p15
+	mount -t vfat /dev/block/mmcblk0p15 /mnt/sdcard
+	symlink /mnt/sdcard /sdcard
+	
 on boot
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power

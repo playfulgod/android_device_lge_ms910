@@ -1,0 +1,232 @@
+#
+#	recovery.rc
+#	init script for LG Bryce (LG Revolution 4G)
+#	Modified from LG sources by Tyler Montgomery (tylerfixer)
+#       Edited for LG ESteem by Dewayne Jones (PlayfulGod)
+#
+on boot-pause
+    exec system/bin/battery_charging
+    
+#on fs
+on early-fs
+	write /dev/bootprog 1
+	# mount /system
+	mkdir /system
+	#devwait /dev/block/mmcblk0p12
+	wait /dev/block/mmcblk0p12
+	mount ext4 /dev/block/mmcblk0p12 /system ro -o data=ordered
+	
+	# mount /data
+	mkdir /data 0771 system system
+	#devwait /dev/block/mmcblk0p13
+	mount ext3 /dev/block/mmcblk0p13 /data nosuid nodev -o data=ordered
+	
+	# mount /cache
+	mkdir /cache 0771 system system
+	#devwait /dev/block/mmcblk0p6
+	mount ext4 /dev/block/mmcblk0p6 /cache nosuid nodev -o data=ordered
+	
+	# mount /persist
+	mkdir /persist 0771 system system
+	#devwait /dev/block/mmcblk0p5
+	mount ext4 /dev/block/mmcblk0p5 /persist nosuid nodev -o data=ordered
+	
+	# mount internal SD card
+	mkdir /mnt 0775 root system
+	mkdir /mnt/sdcard 0775 system system
+	#devwait /dev/block/mmcblk0p15
+	mount -t vfat /dev/block/mmcblk0p15 /mnt/sdcard
+	symlink /mnt/sdcard /sdcard
+	
+on init
+sysclktz 0
+loglevel 3
+    
+	symlink /system/etc /etc
+	symlink /sys/kernel/debug /d
+
+	mkdir /acct
+	mount cgroup none /acct cpuacct
+	mkdir /acct/uid
+    
+  
+	mount rootfs rootfs / ro remount
+	
+	write /proc/sys/kernel/panic_on_oops 1
+	write /proc/sys/kernel/hung_task_timeout_secs 0
+    
+	
+	write /sys/devices/platform/ers-kernel.0/ers_panic 1
+	write /sys/devices/platform/ers-kernel.0/lte_ers_panic 1
+    
+
+    
+	mkdir /data/mmril 0770 radio radio
+	chown radio radio /data/mmril
+	chmod 0770 /data/mmril
+    
+
+
+	mkdir /data/lgims 0770 system system
+	chown system system /data/lgims
+	chmod 0770 /data/lgims
+	mkdir /data/lgims/config 0770 system system
+	chown system system /data/lgims/config
+	chmod 0770 /data/lgims/config
+
+on boot
+    #ifup lo
+    #hostname localhost
+    #domainname localdomain
+
+    
+    write /proc/sys/net/ipv4/tcp_adv_win_scale  1
+    
+    chown radio system /sys/android_power/state
+    chown radio system /sys/android_power/request_state
+    chown radio system /sys/android_power/acquire_full_wake_lock
+    chown radio system /sys/android_power/acquire_partial_wake_lock
+    chown radio system /sys/android_power/release_wake_lock
+    chown radio system /sys/power/state
+    chown radio system /sys/power/wake_lock
+    chown radio system /sys/power/wake_unlock
+    chmod 0660 /sys/power/state
+    chmod 0660 /sys/power/wake_lock
+    chmod 0660 /sys/power/wake_unlock
+    chmod 0666 /sys/devices/platform/lg_diag_cmd/sms_status
+    chmod 0666 /sys/devices/platform/lg_diag_cmd/get_sms
+    chmod 0666 /sys/devices/platform/lg_diag_cmd/set_sms
+    chmod 0666 /sys/devices/platform/lg_diag_cmd/rsp_sms_status
+    chmod 0666 /sys/devices/platform/lg_diag_cmd/rsp_get_sms
+    chmod 0666 /sys/devices/platform/lg_diag_cmd/rsp_set_sms    
+	chown system system /dev/akm8973_daemon
+	chown system system /dev/akm8973_aot
+	chown system system /dev/kr3dh
+	chmod 0666 /dev/akm8973_aot
+	chmod 0666 /dev/kr3dh
+	chown system system /sys/class/timed_output/pmic_vibrator/enable
+    chown system system /sys/class/timed_output/vibrator/amp
+    chown system system /sys/class/leds/spotlight/brightness
+
+    chown system system /sys/module/sco/parameters/disable_esco
+
+	
+    chown system system /sys/module/g_android/parameters/product_id
+    chown system system /sys/devices/platform/msm_sdcc.1/polling
+    chown system system /sys/devices/platform/msm_sdcc.2/polling
+    chown system system /sys/devices/platform/msm_sdcc.3/polling
+    chown system system /sys/devices/platform/msm_sdcc.4/polling
+    chown system system /sys/devices/platform/msm_hsusb/gadget/wakeup
+   
+    #setprop net.tcp.buffersize.default 4096,87380,138800,4096,16384,138800
+    #setprop net.tcp.buffersize.wifi    4095,87380,110208,4096,16384,110208
+    #setprop net.tcp.buffersize.umts    4094,87380,110208,4096,16384,110208
+    #setprop net.tcp.buffersize.edge    4093,26280,35040,4096,16384,35040
+    #setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
+    #setprop net.tcp.buffersize.ehrpd   4094,87380,138800,4096,16384,138800
+    #setprop net.tcp.buffersize.lte     4094,110208,262800,4096,32768,262800
+    #setprop net.tcp.buffersize.evdo_b  4094,87380,262144,4096,16384,262144
+    
+    
+    write /proc/sys/net/core/rmem_max  262144
+    write /proc/sys/net/core/wmem_max  262144
+    #class_start default
+	mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    setprop wifi.supplicant_scan_interval 20
+    setprop wifi.interface wlan0
+    chmod 0777 /system/etc/dhcpcd/dhcpcd-run-hooks
+    setprop net.mtu.default 1428
+    mkdir /data/misc/dhcp 0777 system system
+	chmod 0666 /dev/msm_vidc_enc
+	chmod 0666 /dev/msm_vidc_dec
+	chmod 0666 /dev/pmem_adsp
+	chmod 0666 /dev/msm_rotator
+	chmod 0666 /dev/graphics/fb0
+	chown system system /data/overlay.flg
+	chmod 0666 /data/overlay.flg
+	chown system system /dev/msm_audio_cal
+	chmod 0777 /dev/msm_audio_cal
+
+	chmod 0777 /sys/module/lge_emmc_direct_access/parameters/write_block
+	chmod 0777 /sys/module/lge_emmc_direct_access/parameters/read_block
+	chmod 0777 /sys/module/lge_emmc_direct_access/parameters/boot_info
+	chmod 0777 /sys/module/lge_emmc_direct_access/parameters/db_integrity_ready
+	chmod 0777 /sys/module/lge_emmc_direct_access/parameters/fpri_crc_ready
+	chmod 0777 /sys/module/lge_emmc_direct_access/parameters/file_crc_ready
+	chmod 0777 /sys/module/lge_emmc_direct_access/parameters/code_partition_crc_ready
+	chmod 0777 /sys/module/lge_emmc_direct_access/parameters/total_crc_ready
+	chmod 0777 /sys/module/lge_emmc_direct_access/parameters/integrity_ret
+	chmod 0777 /dev/block/mmcblk0
+	chown system system /sys/module/android/parameters/product_id  
+	chmod 0444 /sys/module/android/parameters/product_id  
+    chown system system /sys/module/android/parameters/usb_mode  
+    chmod 0666 /sys/module/android/parameters/usb_mode  
+    chown system system /sys/devices/platform/msm_hsusb/gadget/usb_state
+    chown system system /sys/module/android/parameters/user_mode
+    chmod 0666 /sys/devices/platform/msm_hsusb/gadget/usb_state
+    chmod 0666 /sys/module/android/parameters/user_mode
+    mkdir /data/eri
+    chown radio radio /data/eri
+    chmod 0777 /data/eri
+    chown radio radio /data/eri/eri.bin
+    chmod 0777 /data/eri/eri.bin
+    
+	
+#service netd /system/bin/netd
+#    socket netd stream 0660 root system
+	
+service qmuxd /system/bin/qmuxd
+
+#service ril-daemon /system/bin/rild
+#    socket rild stream 660 root radio
+#    socket rild-debug stream 660 radio system
+#    user root
+#    group radio cache inet misc audio qcom_oncrpc diag
+	
+service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf 
+	socket wpa_wlan0 dgram 660 wifi wifi
+	group system wifi inet
+	disabled
+	oneshot
+	
+service dhcpcd /system/bin/dhcpcd -BKA wlan0  
+	disabled
+	oneshot
+	
+on property:init.svc.wpa_supplicant=stopped
+	stop dhcpcd
+
+	
+#service mhotspot_server /system/bin/mhotspot_server /data/misc/wifi
+#	user root
+#	group root
+#	socket mhotspot stream 666
+	
+	
+#service wlp2pservice /system/bin/wlp2pservice
+#    disabled
+#    oneshot
+	
+service dhcpd /system/xbin/udhcpd -f
+	disabled
+	oneshot
+	
+service akmd2 /system/bin/akmd2
+    user system
+    group system
+	oneshot
+	
+#service mocana_ipsec /system/bin/sh /system/etc/mocana_ipsec.sh
+#	oneshot
+	
+#service lgeims /system/bin/lgeims 10
+#	user root
+#	group root
+	
+service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p10 /dev/block/mmcblk0p11 /dev/block/mmcblk0p7
+    user root
+    disabled
+
+on property:ro.emmc=1
+    start rmt_storage
+
