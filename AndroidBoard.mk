@@ -9,7 +9,6 @@ ALL_PREBUILT += $(file)
 $(file) : $(LOCAL_PATH)/init.bryce.rc | $(ACP)
 	$(transform-prebuilt-to-target)
 
-
 file := $(TARGET_RECOVERY_ROOT_OUT)/sbin/postrecoveryboot.sh
 ALL_PREBUILT += $(file)
 $(file) : $(LOCAL_PATH)/recovery/postrecoveryboot.sh | $(ACP)
