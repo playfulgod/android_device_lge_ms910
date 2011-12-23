@@ -93,6 +93,9 @@ service rmt_storage /sbin/rmt_storage /dev/block/mmcblk0p10 /dev/block/mmcblk0p1
     user root
     disabled
     
+on property:ro.emmc=1
+    start rmt_storage
+    
 service ueventd /sbin/ueventd
     critical
 
@@ -101,8 +104,6 @@ service recovery /sbin/recovery
 service adbd /sbin/adbd recovery
     disabled
 
-on property:ro.emmc=1
-    start rmt_storage
     
 on property:persist.service.adb.enable=1
     start adbd
