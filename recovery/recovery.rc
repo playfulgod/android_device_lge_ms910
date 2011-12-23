@@ -23,16 +23,16 @@ on boot
 
     class_start default
 
+service rmt_storage /sbin/rmt_storage /dev/block/mmcblk0p10 /dev/block/mmcblk0p11
+    user root
+    disabled
+    
 service ueventd /sbin/ueventd
     critical
 
 service recovery /sbin/recovery
 
 service adbd /sbin/adbd recovery
-    disabled
-
-service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p10 /dev/block/mmcblk0p11
-    user root
     disabled
 
 on property:ro.emmc=1
