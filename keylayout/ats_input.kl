@@ -1,0 +1,47 @@
+# Copyright (c) 2010, LG Electronics
+
+key 229   MENU				WAKE
+key 139   MENU				WAKE
+key 59    MENU             WAKE
+key 102   HOME				WAKE
+key 158	  BACK				WAKE_DROPPED
+key 62    BACK 				WAKE_DROPPED
+
+key 231   CALL             WAKE_DROPPED
+key 61    CALL             WAKE_DROPPED
+key 62    ENDCALL          WAKE_DROPPED
+key 107   ENDCALL		    WAKE_DROPPED
+
+#key 64    MEDIA_NEXT            WAKE
+#key 65    MEDIA_PLAY_PAUSE      WAKE
+#key 66    MEDIA_PREVIOUS        WAKE
+#key 67    MEDIA_STOP            WAKE
+key 68    CAMERA
+key 116   POWER				WAKE
+key 87    POWER				WAKE
+
+key 127   SEARCH				WAKE_DROPPED
+key 217   SEARCH				WAKE_DROPPED
+
+# Row 2
+key 2     1                 WAKE_DROPPED
+key 3     2                 WAKE_DROPPED
+key 4     3                 WAKE_DROPPED
+key 5     4                 WAKE_DROPPED
+key 6     5                 WAKE_DROPPED
+key 7     6                 WAKE_DROPPED
+key 8     7                 WAKE_DROPPED
+key 9     8                 WAKE_DROPPED
+key 10    9                 WAKE_DROPPED
+key 11    0                 WAKE_DROPPED
+
+# Volume keys
+key 115   VOLUME_UP         WAKE_DROPPED
+key 114   VOLUME_DOWN       WAKE_DROPPED
+
+# symbolic keys
+key 227   STAR
+key 228   POUND
+
+key 14    DEL
+

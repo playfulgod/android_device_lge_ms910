@@ -1,0 +1,7 @@
+# Copyright (c) 2010,LG Electronics
+# touch keys for bryce
+
+key 158   BACK              WAKE_DROPPED
+key 102   HOME              WAKE
+key 139   MENU              WAKE
+key 217   SEARCH            WAKE_DROPPED

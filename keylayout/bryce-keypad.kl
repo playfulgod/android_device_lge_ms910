@@ -1,0 +1,21 @@
+# Copyright (c) 2010, LG Electronics
+#
+# Volume keys
+key 115   VOLUME_UP         WAKE_DROPPED
+key 114   VOLUME_DOWN       WAKE_DROPPED
+
+key 212   CAMERA
+key 226   HEADSETHOOK		WAKE
+key 116   POWER				WAKE
+key 217   SEARCH
+
+key 158	  BACK				WAKE_DROPPED
+key 230   HOME
+key 229   MENU
+key 59    MENU
+key 139   MENU
+
+key 231   CALL
+key 61    CALL
+key 62    END_CALL			WAKE_DROPPED
+key 107   END_CALL			WAKE_DROPPED
