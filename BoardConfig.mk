@@ -3,9 +3,6 @@ USE_CAMERA_STUB := true
 # inherit from the proprietary version
 -include vendor/lge/esteem/BoardConfigVendor.mk
 
-# inherit from common msm7x30 device
-#-include device/htc/msm7x30-common/BoardConfigCommon.mk
-
 TARGET_NO_BOOTLOADER := true
 
 TARGET_BOARD_PLATFORM := msm7x30
@@ -70,7 +67,7 @@ BOARD_USES_QCOM_RESETALL := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
-BOARD_VENDOR_QCOM_AMSS_VERSION := 1200
+BOARD_VENDOR_QCOM_AMSS_VERSION := 6225
 
 BOARD_EGL_CFG := device/htc/msm7x30-common/egl.cfg
 
@@ -83,7 +80,7 @@ BOARD_CAMERA_USE_GETBUFFERINFO := true
 
 BOARD_OVERLAY_FORMAT_YCbCr_420_SP := true
 
-BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 1240
+BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 6225
 
 BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
