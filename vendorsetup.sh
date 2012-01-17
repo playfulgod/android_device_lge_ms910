@@ -14,4 +14,5 @@
 # limitations under the License.
 #
 
-add_lunch_combo full_esteem-userdebug
+add_lunch_combo full_esteem-eng
+add_lunch_combo cm_esteem-userdebug
