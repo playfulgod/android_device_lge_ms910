@@ -1,7 +1,8 @@
 #
 #	init.bryce.rc
-#	init script for LG Bryce (LG Revolution 4G)
+#	init script for LG Bryce (LG ESteem 4G)
 #	Modified from LG sources by Tyler Montgomery (tylerfixer)
+#	Edited for the Esteem by Dewayne Jones (PlayfulGod)
 #
 
 #on fs
@@ -239,10 +240,10 @@ service lgeims /system/bin/lgeims 10
 	user root
 	group root
 	
-service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p10 /dev/block/mmcblk0p11
+#service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p10 /dev/block/mmcblk0p11
     user root
     disabled
 
-on property:ro.emmc=1
+#on property:ro.emmc=1
     start rmt_storage
 	

@@ -11,12 +11,10 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 $(call inherit-product, device/lge/esteem/esteem.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
 
-
-
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := esteem
 PRODUCT_NAME := cm_esteem
-PRODUCT_BRAND := MetroPCS
+PRODUCT_BRAND := LGE
 PRODUCT_MODEL := LG-MS910
 PRODUCT_MANUFACTURER := LGE
 

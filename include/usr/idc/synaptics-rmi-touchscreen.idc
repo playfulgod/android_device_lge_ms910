@@ -1,4 +1,3 @@
- 
 # Copyright (C) 2010 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +13,7 @@
 # limitations under the License.
 
 #
-# Input Device Calibration File for the Bravo touch screen.
+# Input Device Calibration File for the ace touch screen.
 #
 # These calibration values are derived from empirical measurements
 # and may not be appropriate for use with other touch screens.
@@ -55,8 +54,25 @@ touch.pressure.source = default
 touch.pressure.scale = 0.01
 
 # Size
-touch.size.calibration = normalized
+#touch.size.calibration = normalized
+touch.size.calibration = area
 
 # Orientation
 touch.orientation.calibration = none
+
+# Set Gesture Mode to disable pointer
+touch.gestureMode = spots
+
+# Set DeviceType
+touch.deviceType = touchScreen
+
+# Set size of surfaces
+#touch.surfaceWidth = 960px
+#touch.surfaceHeight = 540px
+
+# Set orientation awareness
+# Thanks to SGS2 team
+touch.orientationAware = 1
+
+
 
