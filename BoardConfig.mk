@@ -40,8 +40,10 @@ BOARD_HAS_SDCARD_INTERNAL := true
 TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
 
 # custom lun0 file for USB Mass Storage
-#BOARD_USE_USB_MASS_STORAGE_SWITCH := true
-BOARD_UMS_LUNFILE := /sys/devices/platform/usb_mass_storage/lun0/file
+BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/esteem/UsbController.cpp
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun"
+BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
 
 TARGET_PREBUILT_KERNEL := device/lge/esteem/kernel
 
@@ -54,11 +56,11 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 WPA_SUPPLICANT_VERSION      := VER_0_6_X
 BOARD_WLAN_DEVICE           := bcm4329
-WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/bcm4329.ko"
+WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/wireless.ko"
 WIFI_DRIVER_FW_STA_PATH     := "/vendor/firmware/fw_bcm4329.bin"
 WIFI_DRIVER_FW_AP_PATH      := "/vendor/firmware/fw_bcm4329_apsta.bin"
 WIFI_DRIVER_MODULE_ARG      := "firmware_path=/vendor/firmware/fw_bcm4329.bin nvram_path=/proc/calibration"
-WIFI_DRIVER_MODULE_NAME     := "bcm4329"
+WIFI_DRIVER_MODULE_NAME     := "wireless"
 
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_QCOM_VOIPMUTE := true
@@ -80,7 +82,7 @@ BOARD_CAMERA_USE_GETBUFFERINFO := true
 
 BOARD_OVERLAY_FORMAT_YCbCr_420_SP := true
 
-BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 6225
+BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
