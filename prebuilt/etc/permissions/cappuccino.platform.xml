@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+    <permission name="android.permission.ACCESS_LGDRM" >
+        <group gid="lgdrm_acc" />
+    </permission>
+    <assign-permission name="android.permission.ACCESS_LGDRM" uid="media" />
+</permissions>

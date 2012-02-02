@@ -1,0 +1,37 @@
+#!/system/bin/sh
+
+sleep 3
+renice 18 `pidof kswapd0` # please give credit and thanks to loopy for this line if it works
+
+##### Set nice levels for smoothness loop BEGIN #####
+### Let's loop this in the background for a bit
+for i in {1..20}
+do
+    sleep 5
+
+    ### Phone dialer app ###
+    renice -20 `pidof com.android.phone`
+    renice -20 `pidof com.android.contacts`
+
+    ### Launcher apps ###
+    renice -19 `pidof com.lge.launcher`
+    renice -19 `pidof org.adw.launcher`
+
+    ### System apps ###
+    renice -19 `pidof com.android.mms`
+    renice -19 `pidof com.swype.android.inputmethod`
+    renice -15 `pidof com.android.systemui`
+    renice -9 `pidof com.android.settings`
+    renice -9 `pidof com.android.browser`
+    renice -9 `pidof com.android.vending`
+    renice -6 `pidof com.lge.camera`
+    renice -6 `pidof com.lge.email`
+    renice -6 `pidof com.google.android.youtube`
+    renice -6 `pidof com.google.android.apps.maps`
+    renice -3 `pidof android.process.acore`
+    renice -3 `pidof com.android.providers.media`
+
+    ### Memory management kernel thread ###
+    renice 19 `pidof kswapd0` # please give credit and thanks to loopy for this line if it works
+done
+##### Set nice levels for smoothness loop END #####

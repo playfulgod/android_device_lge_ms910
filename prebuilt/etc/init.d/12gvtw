@@ -1,0 +1,79 @@
+#!/system/bin/sh
+
+echo "2048,3072,6144,15360,17920,20480" > /sys/module/lowmemorykiller/parameters/minfree
+
+echo "4096" > /proc/sys/vm/min_free_kbytes
+echo "0" > /proc/sys/vm/oom_kill_allocating_task;
+echo "0" > /proc/sys/vm/panic_on_oom;
+echo "0" > /proc/sys/vm/laptop_mode;
+echo "0" > /proc/sys/vm/swappiness
+echo "50" > /proc/sys/vm/vfs_cache_pressure
+echo "90" > /proc/sys/vm/dirty_ratio
+echo "70" > /proc/sys/vm/dirty_background_ratio
+
+echo "500" > /proc/sys/vm/dirty_expire_centisecs
+echo "1000" > /proc/sys/vm/dirty_writeback_centisecs
+
+tune2fs -o journal_data_writeback /block/path/to/system
+tune2fs -O ^has_journal /block/path/to/system
+tune2fs -o journal_data_writeback /block/path/to/cache
+tune2fs -O ^has_journal /block/path/to/cache
+tune2fs -o journal_data_writeback /block/path/to/data
+tune2fs -O ^has_journal /block/path/to/data
+
+for i in \
+`find /data -iname "*.db"`
+do \
+sqlite3 $i 'VACUUM;'; 
+done
+
+SAMPLING_RATE=$(busybox expr `cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_transition_latency` \* 750 / 1000)
+echo 95 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+echo $SAMPLING_RATE > /sys/devices/system/cpu/cpu0/cpufreq/ondemand/sampling_rate
+
+CACHESIZE=$(df -k /cache | tail -n1 | tr -s ' ' | cut -d ' ' -f2)
+if [ $CACHESIZE -gt 80000 ]
+	then
+	echo "Large cache detected, moving dalvik-cache to /cache"
+	if [ ! -d /cache/dalvik-cache ]
+		then
+		busybox rm -rf /cache/dalvik-cache /data/dalvik-cache
+		mkdir /cache/dalvik-cache /data/dalvik-cache
+		fi
+
+	busybox chown 1000:1000 /cache/dalvik-cache
+	busybox chmod 0771 /cache/dalvik-cache
+
+	# bind mount dalvik-cache so we can still boot without the sdcard
+	busybox mount -o bind /cache/dalvik-cache /data/dalvik-cache
+	busybox chown 1000:1000 /data/dalvik-cache
+	busybox chmod 0771 /data/dalvik-cache
+	else
+	echo "Small cache detected, dalvik-cache will remain on /data"
+fi
+
+echo "++++ ZIP ALIGNMENT PROCESS STARTING ++++"
+LOG_FILE=/data/zipalign.log
+    if [ -e $LOG_FILE ]; then
+        rm $LOG_FILE;
+    fi;
+
+echo "Starting DC Automatic ZipAlign $( date +"%m-%d-%Y %H:%M:%S" )" | tee -a $LOG_FILE;
+    for apk in /data/app/*.apk ; do
+        zipalign -c 4 $apk;
+        ZIPCHECK=$?;
+        if [ $ZIPCHECK -eq 1 ]; then
+                echo ZipAligning $(basename $apk)  | tee -a $LOG_FILE;
+                zipalign -f 4 $apk /cache/$(basename $apk);
+                        if [ -e /cache/$(basename $apk) ]; then
+                                cp -f -p /cache/$(basename $apk) $apk  | tee -a $LOG_FILE;
+                                rm /cache/$(basename $apk);
+                        else
+                                echo ZipAligning $(basename $apk) Failed DC | tee -a $LOG_FILE;
+                        fi;
+        else
+                echo DCZipAlign already completed on $apk  | tee -a $LOG_FILE;
+        fi;
+       done;
+echo "Automatic ZipAlign finished at $( date +"%m-%d-%Y %H:%M:%S" )" | tee -a $LOG_FILE;
+echo "++++ ZIP ALIGNMENT PROCESS FINISHED ++++"

@@ -1,0 +1,10 @@
+#!/system/bin/sh
+/system/xbin/busybox rm /data/system/dropbox/*
+/system/xbin/busybox rm /data/system/usagestats/*
+/system/xbin/busybox rm /data/tombstones/*
+/system/xbin/busybox rm /data/eri/*
+/system/xbin/busybox chmod 0444 /data/system/appusagestats
+/system/xbin/busybox chmod 0444 /data/system/dropbox
+/system/xbin/busybox chmod 0444 /data/system/usagestats
+/system/xbin/busybox chmod 0444 /data/eri
+

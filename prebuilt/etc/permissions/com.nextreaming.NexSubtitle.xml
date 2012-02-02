@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+<library name="com.nextreaming.NexSubtitle"
+          file="/system/framework/com.nextreaming.NexSubtitle.jar"/>
+</permissions>

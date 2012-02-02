@@ -240,10 +240,10 @@ service lgeims /system/bin/lgeims 10
 	user root
 	group root
 	
-#service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p10 /dev/block/mmcblk0p11
+service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p10 /dev/block/mmcblk0p11
     user root
     disabled
 
-#on property:ro.emmc=1
+on property:ro.emmc=1
     start rmt_storage
 	

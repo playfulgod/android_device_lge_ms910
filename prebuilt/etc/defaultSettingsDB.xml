@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parameters>
+	<parameter db="android_metadata">en_US</parameter>
+	
+	<parameter db="secure" name="bluetooth_on">0</parameter>
+<!-- BEGIN : jaesung.yeom(¿°Àç¼º), 2011.2.2 -->
+<!-- MOD   : Change default valued for Data Roaming Enabled to 0(Disabled) : VzW requirement  -->
+	<parameter db="secure" name="data_roaming">0</parameter>
+<!-- END : jaesung.yeom(¿°Àç¼º), 2011.2.2 -->
+
+<!--  BEGIN: ci.song@lge.com 2011-07-25 : Setting->Applications->Unknown sources, defaut is check, 0 to 1  -->
+	<parameter db="secure" name="install_non_market_apps">1</parameter>
+<!--  END: ci.song@lge.com 2011-07-25 : Setting->Applications->Unknown sources, defaut is check, 0 to 1  -->
+
+	<parameter db="secure" name="location_providers_allowed"></parameter>
+	<parameter db="secure" name="assisted_gps_enabled">1</parameter>
+	<parameter db="secure" name="network_preference">1</parameter>
+	<parameter db="secure" name="usb_mass_storage_enabled">1</parameter>
+	
+<!--  BEGIN: ci.song@lge.com 2011-04-28 : MS690 is 1, MS910 is temporary 0, 2011-07-13 change 0 to 1   -->
+	<parameter db="secure" name="wifi_on">1</parameter>
+<!--  END: ci.song@lge.com 2011-04-28 :  MS690 is 1, MS910 is temporary 1->0 -->	
+
+	<parameter db="secure" name="wifi_networks_available_notification_on">1</parameter>
+<!-- BEGIN : jaesung.yeom(¿°Àç¼º), 2011.2.2 -->
+<!-- MOD   : Change default value for Preferred Network Mode to 12(NETWORK_MODE_CDMA_GLOBAL) : Original 4(NETWORK_MODE_CDMA) -->
+	<parameter db="secure" name="preferred_network_mode">12</parameter>
+<!-- END : jaesung.yeom(¿°Àç¼º), 2011.2.2 -->
+	<parameter db="secure" name="cdma_cell_broadcast_sms">1</parameter>
+<!--  BEGIN: ci.song@lge.com 2011-04-28 : MS910 LTE change RUIM 0 to NV 1   -->	
+	<parameter db="secure" name="preferred_cdma_subscription">1</parameter>
+<!--  END: ci.song@lge.com 2011-04-28 :  MS910 LTE change RUIM 0 to NV 1 -->	
+
+<!--  Temporary: ci.song@lge.com 2011-05-05 :  FPRI Last Fail Item = 0 to 1 -->	
+	<parameter db="secure" name="mock_location">0</parameter>
+	
+<!-- BEGIN : 0015400: donghan07.lee@lge.com 2011.02.05. -->
+<!-- MOD   : 0015400: [bryce] [settings] FPRI test backup_transport default DB value checked.   -->
+<!--  BEGIN: ci.song@lge.com 2011-04-28 : MS690 is "android/com.android.internal.backup.LocalTransport"  -->
+	<parameter db="secure" name="backup_transport">android/com.android.internal.backup.LocalTransport</parameter>
+<!--  END: ci.song@lge.com 2011-04-28 :  MS690 is "android/com.android.internal.backup.LocalTransport"   -->	
+<!-- END   : 0015400: donghan07.lee@lge.com 2011.02.05. -->
+<!-- START open11gi.gwak set default input method to Swype 2011.06.17 -->
+	<parameter db="secure" name="enabled_input_methods">com.swype.android.inputmethod/.SwypeInputMethod:com.lge.android.hime/.HIME</parameter>	
+	<parameter db="secure" name="default_input_method">com.swype.android.inputmethod/.SwypeInputMethod</parameter>
+<!-- END open11gi.gwak set default input method to Swype 2011.06.17 -->
+	<parameter db="secure" name="backup_enabled">0</parameter>
+	<parameter db="secure" name="device_provisioned">1</parameter>
+	
+	<parameter db="system" name="volume_music">11</parameter>
+	<parameter db="system" name="volume_system">7</parameter>
+	
+<!--  BEGIN: ci.song@lge.com 2011-07-25 : volume_voice defaut value is 4, It is changed 5 because of FPRI Fail  -->
+	<parameter db="system" name="volume_voice">4</parameter>
+<!--  END: ci.song@lge.com 2011-07-25 : volume_voice defaut value is 4, It is changed 5 because of FPRI Fail  -->		
+
+	<parameter db="system" name="volume_alarm">6</parameter>
+	<parameter db="system" name="volume_notification">5</parameter>
+	<parameter db="system" name="mode_ringer">2</parameter>
+<!-- BEGIN : 0015425: donghan07.lee@lge.com 2011.02.05. -->
+<!-- MOD   :  ci.song@lge.com 2011-07-3 : MetroPCS reqs, change Only in Silent mode to Always. = change 4 to 5 -->
+	<parameter db="system" name="vibrate_on">5</parameter>
+<!-- END   : 0015425: donghan07.lee@lge.com 2011.02.05. -->
+	<parameter db="system" name="mode_ringer_streams_affected">1062</parameter>
+	<parameter db="system" name="mute_streams_affected">46</parameter>
+	<parameter db="system" name="dim_screen">1</parameter>
+	<parameter db="system" name="socket_data_call_enable">1</parameter>
+	<parameter db="system" name="stay_on_while_plugged_in">0</parameter>
+<!--  BEGIN: ci.song@lge.com 2011-05-13 : TAM Req. default Screen timeout changes 1Min to 30sec.    -->
+	<parameter db="system" name="screen_off_timeout">30000</parameter>
+<!--  END: ci.song@lge.com 2011-05-13 : TAM Req. default Screen timeout changes 1Min to 30sec.   -->
+	<parameter db="system" name="emergency_tone">0</parameter>
+	<parameter db="system" name="call_auto_retry">0</parameter>
+	<parameter db="system" name="dtmf_tone_type">0</parameter>
+	<parameter db="system" name="hearing_aid">0</parameter>
+	<parameter db="system" name="tty_mode">0</parameter>
+	<parameter db="system" name="airplane_mode_on">0</parameter>
+	<parameter db="system" name="airplane_mode_radios">cell,bluetooth,wifi</parameter>
+	<parameter db="system" name="airplane_mode_toggleable_radios">bluetooth,wifi</parameter>
+	<parameter db="system" name="auto_time">1</parameter>
+<!-- BEGIN : 0017502: donghan07.lee@lge.com 2011.02.09. -->
+<!-- MOD   : 0017502: [bryce] [settings] FPRI check list modified.   -->
+	<parameter db="system" name="screen_brightness">150</parameter>
+<!-- END   : 0017502: donghan07.lee@lge.com 2011.02.09. -->
+
+<!-- BEGIN : 0015726: donghan07.lee@lge.com 2011.02.09. -->
+<!-- MOD   : 0015726: [bryce] [settings] FPRI test fail item update.   -->
+
+<!--  BEGIN: ci.song@lge.com 2011-04-28 : MS690 screen_brightness_mode is 0 -->
+	<parameter db="system" name="screen_brightness_mode">1</parameter>
+<!--  END: ci.song@lge.com 2011-04-28 :  MS690 screen_brightness_mode is 0 -->
+
+<!-- END   : 0015726: donghan07.lee@lge.com 2011.02.09. -->
+	<parameter db="system" name="window_animation_scale">1.0</parameter>
+	<parameter db="system" name="transition_animation_scale">1.0</parameter>
+	<parameter db="system" name="accelerometer_rotation">1</parameter>
+	<parameter db="system" name="haptic_feedback_enabled">1</parameter>
+	<parameter db="system" name="notification_light_pulse">1</parameter>
+	<parameter db="system" name="bt_svcst_bluetooth_bpp_service">0</parameter>
+	<parameter db="system" name="bt_svcst_com.broadcom.bt.app.system.DataGatewayService">1</parameter>
+<!--BEGIN: 0017556 sinyoung.jun@lge.com 2011.03.06 -->
+<!--MOD: 0017556: [BRYCE][BT] Change to disable Bluetooth DUN service in default setting DB. -->
+	<parameter db="system" name="bt_svcst_bluetooth_dun">0</parameter>
+<!--ENd:0017556 sinyoung.jun@lge.com 2011.03.06 -->	
+	<parameter db="system" name="bt_svcst_bluetooth_ftp">1</parameter>
+	<parameter db="system" name="bt_svcst_bluetooth_opp_service">1</parameter>
+	<parameter db="system" name="bt_svcst_bluetooth_pbap">1</parameter>
+	<parameter db="system" name="bt_svcst_bluetooth_sap">0</parameter>
+	<parameter db="system" name="bt_svcst_init">1</parameter>		
+	<parameter db="system" name="volume_ring">5</parameter>
+	<parameter db="system" name="next_alarm_formatted"></parameter>
+	
+</parameters>

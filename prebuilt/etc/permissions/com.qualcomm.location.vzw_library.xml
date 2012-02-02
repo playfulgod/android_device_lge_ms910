@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!---/******************************************************************************
+* @file    com.qualcomm.location.vzw_library.xml
+* @brief   configuration file for permission mapping and library publishing 
+*  Coppyright (C) 2010 QUALCOMM Incorporated.
+*  All Rights Reserved. QUALCOMM Proprietary and Confidential.
+*  *****************************************************************************-->
+
+
+<permissions>
+
+<!-- Access Location API through RPC -->
+<!-- Note on some platforms, system group is also needed to access RPC -->
+<permission name="com.qualcomm.permission.ACCESS_LOCATION_API" >
+    <group gid="qcom_oncrpc" />
+    <group gid="system" />
+</permission>
+
+
+<library name="com.qualcomm.location.vzw_library" file="/system/framework/com.qualcomm.location.vzw_library.jar"/>
+
+</permissions>
+

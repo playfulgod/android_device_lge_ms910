@@ -3,12 +3,15 @@ USE_CAMERA_STUB := true
 # inherit from the proprietary version
 -include vendor/lge/esteem/BoardConfigVendor.mk
 
+# We have so much memory 3:1 split is detrimental to us.
+TARGET_USES_2G_VM_SPLIT := true
+
 TARGET_NO_BOOTLOADER := true
 
 TARGET_BOARD_PLATFORM := msm7x30
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno205
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 
-BOARD_USES_ADRENO_205 := true
+BOARD_USES_ADRENO_200 := true
 
 ## ARMv7 Processor rev 2 (v7l)
 TARGET_CPU_ABI := armeabi
@@ -30,21 +33,27 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1031798784
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1610612736
 BOARD_FLASH_BLOCK_SIZE := 131072
 
+BOARD_USES_MMCUTILS := true
+
+# Filesystem
+BOARD_SYSTEM_DEVICE := /dev/block/mmcblk0p12
+BOARD_SYSTEM_FILESYSTEM := ext4
+BOARD_DATA_DEVICE := /dev/block/mmcblk0p13
+BOARD_DATA_FILESYSTEM := ext4
+BOARD_CACHE_DEVICE := /dev/block/mmcblk0p6
+BOARD_CACHE_FILESYSTEM := ext4
 BOARD_SDCARD_DEVICE_PRIMARY := /dev/block/mmcblk1p1
 BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk1
 BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2
-BOARD_USES_MMCUTILS := true
-
-BOARD_HAS_NO_MISC_PARTITON := true
+BOARD_HAS_NO_MISC_PARTITION := true
 TARGET_USERIMAGES_USE_EXT4 := true
 
 BOARD_HAS_SDCARD_INTERNAL := true
 
 TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
 
-# custom lun0 file for USB Mass Storage
-BOARD_USE_USB_MASS_STORAGE_SWITCH := true
-BOARD_UMS_LUNFILE := /sys/devices/platform/usb_mass_storage/lun0/file
+# USB Mass Storage
+BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
 
 TARGET_PREBUILT_KERNEL := device/lge/esteem/kernel
 
@@ -63,19 +72,13 @@ WIFI_DRIVER_FW_AP_PATH      := "/vendor/firmware/fw_bcm4329_apsta.bin"
 WIFI_DRIVER_MODULE_ARG      := "firmware_path=/vendor/firmware/fw_bcm4329.bin nvram_path=/proc/calibration"
 WIFI_DRIVER_MODULE_NAME     := "bcm4329"
 
-BOARD_USES_HGL := true
 BOARD_USES_GENERIC_AUDIO := false
-BOARD_USES_QCOM_VOIPMUTE := true
-BOARD_USES_QCOM_RESETALL := true
 
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
 BOARD_VENDOR_QCOM_AMSS_VERSION := 6225
-
-BOARD_EGL_CFG := device/lge/esteem/include/lib/egl/egl.cfg
-
-USE_OPENGL_RENDERER := false
+BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 #qcom
 BOARD_USES_QCOM_HARDWARE := ture
@@ -84,20 +87,23 @@ BOARD_USES_QCOM_LIBRPC := true
 BOARD_USES_QCOM_GPS := true
 BOARD_USE_QCOM_PMEM := true
 
-TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
-
-TARGET_USES_GENLOCK := true
-
 # Touchscreen
 #BOARD_USE_LEGACY_TOUCHSCREEN := true
+BOARD_EGL_CFG := device/lge/esteem/prebuilt/lib/egl/egl.cfg
+USE_OPENGL_RENDERER := true
+#BOARD_NO_RGBX_8888 := true
+TARGET_USES_GENLOCK := true
+TARGET_HAVE_HDMI_OUT := true
+TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 
 BOARD_CAMERA_USE_GETBUFFERINFO := true
-
+BOARD_USES_OVERLAY := false
 BOARD_OVERLAY_FORMAT_YCbCr_420_SP := true
+COMMON_GLOBAL_CFLAGS += -DMISSING_EGL_EXTERNAL_IMAGE -DMISSING_EGL_PIXEL_FORMAT_YV12 -DMISSING_GRALLOC_BUFFERS
 
-BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
+TARGET_OTA_ASSERT_DEVICE := esteem,bryce,MS910
