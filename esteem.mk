@@ -113,7 +113,6 @@ PRODUCT_COPY_FILES += \
     device/lge/esteem/prebuilt/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
     device/lge/esteem/prebuilt/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
     device/lge/esteem/prebuilt/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
-#    device/lge/esteem/prebuilt/lib/egl/libGLES_android.so:system/lib/libGLES_android.so \
     device/lge/esteem/prebuilt/lib/egl/libq3dtools_adreno200.so:system/lib/libq3dtools_adreno200.so \
     device/lge/esteem/prebuilt/lib/egl/egl.cfg:system/lib/egl/egl.cfg \
     device/lge/esteem/prebuilt/lib/libgsl.so:system/lib/libgsl.so 
@@ -124,7 +123,7 @@ PRODUCT_COPY_FILES += \
 
 # Keychar & Keylayout
 PRODUCT_COPY_FILES += \
-    device/lge/esteem/include/usr/idc/touch_keypad.idc:system/usr/idc/touch_keypad.idc \
+    device/lge/esteem/prebuilt/usr/idc/touch_keypad.idc:system/usr/idc/touch_keypad.idc \
     device/lge/esteem/keychars/ats_input.kcm.bin:system/usr/keychars/ats_input.kcm.bin \
     device/lge/esteem/keychars/bryce-keypad.kcm.bin:system/usr/keychars/bryce-keypad.kcm.bin \
     device/lge/esteem/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
