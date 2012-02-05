@@ -2,7 +2,7 @@
 $(call inherit-product, vendor/cm/config/gsm.mk)
 
 # Release name
-PRODUCT_RELEASE_NAME := Esteem-CM9
+PRODUCT_RELEASE_NAME := Esteem-CM9-$(shell date +%m%d%Y)-
 
 UTC_DATE := $(shell date +%s)
 DATE := $(shell date +%Y%m%d)

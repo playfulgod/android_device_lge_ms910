@@ -33,6 +33,7 @@ PRODUCT_PACKAGES += \
     lights.msm7x30 \
     librs_jni \
     gralloc.msm7x30 \
+    hwcomposer.default \
     hwcomposer.msm7x30 \
     overlay.default \
     libmemalloc \
@@ -41,6 +42,7 @@ PRODUCT_PACKAGES += \
     libOmxVenc \
     libOmxVdec \
     liboverlay \
+    libaudiohw_legacy \
     com.android.future.usb.accessory
 
 # Permissions
@@ -111,7 +113,7 @@ PRODUCT_COPY_FILES += \
     device/lge/esteem/prebuilt/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
     device/lge/esteem/prebuilt/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
     device/lge/esteem/prebuilt/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
-    device/lge/esteem/prebuilt/lib/egl/libGLES_android.so:system/lib/libGLES_android.so \
+#    device/lge/esteem/prebuilt/lib/egl/libGLES_android.so:system/lib/libGLES_android.so \
     device/lge/esteem/prebuilt/lib/egl/libq3dtools_adreno200.so:system/lib/libq3dtools_adreno200.so \
     device/lge/esteem/prebuilt/lib/egl/egl.cfg:system/lib/egl/egl.cfg \
     device/lge/esteem/prebuilt/lib/libgsl.so:system/lib/libgsl.so 

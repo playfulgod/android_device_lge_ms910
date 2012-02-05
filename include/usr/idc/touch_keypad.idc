@@ -13,7 +13,7 @@
 # limitations under the License.
 
 #
-# Input Device Calibration File for the Triumph (bu21018mwv) touch screen.
+# Input Device Configuration File for the bi041p touch screen.
 #
 # These calibration values are derived from empirical measurements
 # and may not be appropriate for use with other touch screens.
@@ -31,27 +31,25 @@ touch.touchSize.calibration = pressure
 # Driver reports tool size as an area measurement.
 #
 # Based on empirical measurements, we estimate the size of the tool
-# using size = sqrt(22 * rawToolArea + 0) * 9.2 + 0.
+# using size = sqrt(22 * rawToolArea + 0) * 6 + 0.
 touch.toolSize.calibration = area
 touch.toolSize.areaScale = 22
 touch.toolSize.areaBias = 0
-touch.toolSize.linearScale = 9.2
+touch.toolSize.linearScale = 6
 touch.toolSize.linearBias = 0
 touch.toolSize.isSummed = 0
 
 # Pressure
 # Driver reports signal strength as pressure.
 #
-# A normal thumb touch typically registers about 100 signal strength
+# A normal index finger touch typically registers about 80 signal strength
 # units although we don't expect these values to be accurate.
 touch.pressure.calibration = amplitude
 touch.pressure.source = default
-touch.pressure.scale = 0.01
+touch.pressure.scale = 0.0125
 
 # Size
-touch.size.calibration = normalized
+touch.size.calibration = geometric
 
 # Orientation
-touch.orientation.calibration = none
-
-
+touch.orientation.calibration = interpolated
