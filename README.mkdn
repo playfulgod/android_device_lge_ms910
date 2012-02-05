@@ -70,6 +70,6 @@ If the build was successful, you can now take the update zip found in out/target
 
 When you want to rebuild with new changes to the BoardConfig.mk or after syncing to the latest CM src make sure to do the following before you recompile.
 
-make clobber
+    $ make clobber
 
 
