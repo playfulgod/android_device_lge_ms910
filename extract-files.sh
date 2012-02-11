@@ -19,14 +19,9 @@ DEVICE=esteem
 
 mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary
 mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary/bin
-mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietarylib
+mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary/lib
 mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary/lib/hw
 mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary/lib/egl
-
-
-
-
-
 
 # Radio binaries
 adb pull /system/bin/qmuxd  ../../../vendor/$VENDOR/$DEVICE/proprietary/bin
@@ -153,7 +148,7 @@ adb pull /system/lib/libgemini.so  ../../../vendor/$VENDOR/$DEVICE/proprietary/l
 # GPS
 adb pull /system/lib/libcommondefs.so  ../../../vendor/$VENDOR/$DEVICE/proprietary/lib
 
-(cat << EOF) | sed s/__DEVICE__/$DEVICE/g | sed s/__VENDOR__/$VENDOR/g > ../../../vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk
+(cat << EOF) | sed s/__DEVICE__/$DEVICE/g | sed s/__VENDOR__/$VENDOR/g > ../../../vendor/$VENDOR/$DEVICE/device-vendor-blobs.mk
 # Copyright (C) 2010 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");

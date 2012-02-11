@@ -39,12 +39,6 @@ BOARD_HAS_SDCARD_INTERNAL := true
 
 TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
 
-# custom lun0 file for USB Mass Storage
-BOARD_USE_USB_MASS_STORAGE_SWITCH := true
-BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/esteem/UsbController.cpp
-TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun"
-BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
-
 TARGET_PREBUILT_KERNEL := device/lge/esteem/kernel
 
 # Recovery
@@ -70,6 +64,7 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
 BOARD_VENDOR_QCOM_AMSS_VERSION := 6225
+BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 BOARD_EGL_CFG := device/htc/msm7x30-common/egl.cfg
 
@@ -81,8 +76,6 @@ BOARD_USE_QCOM_PMEM := true
 BOARD_CAMERA_USE_GETBUFFERINFO := true
 
 BOARD_OVERLAY_FORMAT_YCbCr_420_SP := true
-
-BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO

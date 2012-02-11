@@ -123,4 +123,4 @@ PRODUCT_COPY_FILES += \
 
 # SDCard
 PRODUCT_COPY_FILES += \
-    device/lge/esteem/vold.fstab:system/etc/vol.fstab
+    device/lge/esteem/vold.fstab:system/etc/vold.fstab
