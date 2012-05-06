@@ -211,7 +211,7 @@ PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/bin/mm-venc-omx-test720p:/system/bin/mm-venc-omx-test720p \\
     vendor/__VENDOR__/__DEVICE__/proprietary/bin/mm-video-driver-test:/system/bin/mm-video-driver-test \\
     vendor/__VENDOR__/__DEVICE__/proprietary/bin/mm-video-encdrv-test:/system/bin/mm-video-encdrv-test \\
-    vendor/__VENDOR__/__DEVICE__/proprietary/liblibgemini.so:/system/lib/libgemini.so
+    vendor/__VENDOR__/__DEVICE__/proprietary/lib/libgemini.so:/system/lib/libgemini.so
 
 # egl
 #PRODUCT_COPY_FILES += \\
