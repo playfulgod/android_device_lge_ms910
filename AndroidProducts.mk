@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/esteem.mk
+    $(LOCAL_DIR)/ms910.mk

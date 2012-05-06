@@ -15,9 +15,13 @@
 # limitations under the License.
 
 VENDOR=lge
-DEVICE=esteem
+DEVICE=ms910
 
 mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary
+mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary/bin
+mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary/lib
+mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary/lib/hw
+mkdir -p ../../../vendor/$VENDOR/$DEVICE/proprietary/lib/egl
 
 # Radio binaries
 adb pull /system/bin/qmuxd  ../../../vendor/$VENDOR/$DEVICE/proprietary/bin

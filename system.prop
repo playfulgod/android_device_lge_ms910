@@ -21,6 +21,8 @@ ro.dev.dmm=1
 dev.dmm.dpd.trigger_delay=30user.feature.lgpoweroff=true
 dev.pm.dyn_samplingrate=1
 
+ro.sf.lcd_density=240
+
 #
 # system props for the cne module
 #
@@ -93,14 +95,6 @@ ro.tether.denied=false
 #
 # ADDITIONAL_BUILD_PROPERTIES
 #
-user.feature.lgdrm=true
-user.feature.lgresource=true
-user.feature.lgpoweroff=true
-user.feature.preload_so=true
-user.feature.preload_del=true
-user.feature.lock_sui=true
-user.feature.sui=true
-user.feature.lgpoweroff=true
 ro.setupwizard.mode=DISABLED
 ro.com.google.gmsversion=2.3_r6
 ro.cdma.home.operator.alpha=MetroPCS

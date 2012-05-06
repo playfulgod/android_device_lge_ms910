@@ -12,17 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This file includes all definitions that apply only to esteem devices
-#
-# Anything that is generic to all tuna products should go in the tuna directory
+# This file includes all definitions that apply only to ms910 device
 #
 # Everything in this directory will become public
 
-DEVICE_PACKAGE_OVERLAYS := device/lge/esteem/overlay
+DEVICE_PACKAGE_OVERLAYS := device/lge/ms910/overlay
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES := \
 	frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
 
-$(call inherit-product, device/lge/esteem/device.mk)
-$(call inherit-product-if-exists, vendor/lge/esteem/device-vendor.mk)
+$(call inherit-product, device/lge/ms910/device.mk)
+$(call inherit-product-if-exists, vendor/lge/ms910/device-vendor.mk)

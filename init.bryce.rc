@@ -1,60 +1,37 @@
 #
 #	init.bryce.rc
 #	init script for LG Bryce (LG ESteem 4G)
-#	Modified from LG sources by Tyler Montgomery (tylerfixer)
+#	parts taken from init.bryce.rc by Tyler Montgomery (tylerfixer)
 #	Edited for the Esteem by Dewayne Jones (PlayfulGod)
 #
 
 #on fs
 on early-fs
 	write /dev/bootprog 1
+	
 	# mount /system
 	mkdir /system
-	#devwait /dev/block/mmcblk0p12
 	wait /dev/block/mmcblk0p12
 	mount ext4 /dev/block/mmcblk0p12 /system ro -o data=ordered
 	
 	# mount /data
 	mkdir /data 0771 system system
-	#devwait /dev/block/mmcblk0p13
 	mount ext4 /dev/block/mmcblk0p13 /data nosuid nodev -o data=ordered
 	
 	# mount /cache
 	mkdir /cache 0771 system system
-	#devwait /dev/block/mmcblk0p6
 	mount ext4 /dev/block/mmcblk0p6 /cache nosuid nodev -o data=ordered
 	
 	# mount /persist
 	mkdir /persist 0771 system system
-	#devwait /dev/block/mmcblk0p5
 	mount ext4 /dev/block/mmcblk0p5 /persist nosuid nodev -o data=ordered
 	
 	# mount internal SD card
 	mkdir /mnt 0775 root system
 	mkdir /mnt/sdcard 0775 system system
-	#devwait /dev/block/mmcblk0p15
 	mount -t vfat /dev/block/mmcblk0p15 /mnt/sdcard
 	symlink /mnt/sdcard /sdcard
 	
-	#chmod 0777 /sbin/resize2fs_static
-	#chmod 0777 /sbin/e2fsck_static
-	#exec /sbin/resize2fs_static /dev/block/mmcblk0p12
-	#exec /sbin/e2fsck_static -p /dev/block/mmcblk0p12
-	
-	#chmod 0777 /system/bin/resize2fs
-	#chmod 0777 /system/bin/e2fsck
-	#exec /system/bin/resize2fs /dev/block/mmcblk0p13
-	#exec /system/bin/e2fsck -p /dev/block/mmcblk0p13 
-	
-	#exec /system/bin/resize2fs /dev/block/mmcblk0p6
-	#exec /system/bin/e2fsck -p /dev/block/mmcblk0p6
-	
-	#exec /system/bin/resize2fs /dev/block/mmcblk0p5
-	#exec /system/bin/e2fsck -p /dev/block/mmcblk0p5
-    
-	#exec /system/bin/resize2fs /dev/block/mmcblk0p15
-	#exec /system/bin/e2fsck -p /dev/block/mmcblk0p15
-
 on init
 sysclktz 0
 loglevel 3
@@ -65,25 +42,19 @@ loglevel 3
 	mkdir /acct
 	mount cgroup none /acct cpuacct
 	mkdir /acct/uid
-    
-  
+      
 	mount rootfs rootfs / ro remount
 	
 	write /proc/sys/kernel/panic_on_oops 1
 	write /proc/sys/kernel/hung_task_timeout_secs 0
-    
-	
+    	
 	write /sys/devices/platform/ers-kernel.0/ers_panic 1
 	write /sys/devices/platform/ers-kernel.0/lte_ers_panic 1
-    
-
-    
+     
 	mkdir /data/mmril 0770 radio radio
 	chown radio radio /data/mmril
 	chmod 0770 /data/mmril
     
-
-
 	mkdir /data/lgims 0770 system system
 	chown system system /data/lgims
 	chmod 0770 /data/lgims
@@ -95,7 +66,6 @@ on boot
     ifup lo
     hostname localhost
     domainname localdomain
-
     
     write /proc/sys/net/ipv4/tcp_adv_win_scale  1
     
@@ -126,7 +96,6 @@ on boot
     chown system system /sys/class/leds/spotlight/brightness
 
     chown system system /sys/module/sco/parameters/disable_esco
-
 	
     chown system system /sys/module/g_android/parameters/product_id
     chown system system /sys/devices/platform/msm_sdcc.1/polling
@@ -143,8 +112,7 @@ on boot
     setprop net.tcp.buffersize.ehrpd   4094,87380,138800,4096,16384,138800
     setprop net.tcp.buffersize.lte     4094,110208,262800,4096,32768,262800
     setprop net.tcp.buffersize.evdo_b  4094,87380,262144,4096,16384,262144
-    
-    
+     
     write /proc/sys/net/core/rmem_max  262144
     write /proc/sys/net/core/wmem_max  262144
     class_start default
@@ -159,6 +127,11 @@ on boot
 	chmod 0666 /dev/pmem_adsp
 	chmod 0666 /dev/msm_rotator
 	chmod 0666 /dev/graphics/fb0
+	
+	chmod 0666 /dev/kgsl-2d0
+	chmod 0666 /dev/kgsl-3d0
+	chmod 0666 /dev/genlock
+    
 	chown system system /data/overlay.flg
 	chmod 0666 /data/overlay.flg
 	chown system system /dev/msm_audio_cal
@@ -187,8 +160,7 @@ on boot
     chmod 0777 /data/eri
     chown radio radio /data/eri/eri.bin
     chmod 0777 /data/eri/eri.bin
-    
-	
+  	
 service netd /system/bin/netd
     socket netd stream 0660 root system
 	
@@ -212,13 +184,11 @@ service dhcpcd /system/bin/dhcpcd -BKA wlan0
 	
 on property:init.svc.wpa_supplicant=stopped
 	stop dhcpcd
-
 	
 service mhotspot_server /system/bin/mhotspot_server /data/misc/wifi
 	user root
 	group root
 	socket mhotspot stream 666
-	
 	
 service wlp2pservice /system/bin/wlp2pservice
     disabled

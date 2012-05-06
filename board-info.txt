@@ -1,4 +1,4 @@
-require board=esteem
+require board=ms910
 #require version-bootloader=PRIMEKJ10|PRIMEKK13
 #require version-baseband=I9250XXKK2
 

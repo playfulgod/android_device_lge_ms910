@@ -2,7 +2,7 @@
 $(call inherit-product, vendor/cm/config/gsm.mk)
 
 # Release name
-PRODUCT_RELEASE_NAME := Esteem-CM9-$(shell date +%m%d%Y)-
+PRODUCT_RELEASE_NAME := Esteem-CM9-$(shell date +%m%d%Y)
 
 UTC_DATE := $(shell date +%s)
 DATE := $(shell date +%Y%m%d)
@@ -11,12 +11,12 @@ DATE := $(shell date +%Y%m%d)
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/lge/esteem/esteem.mk)
+$(call inherit-product, device/lge/ms910/ms910.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := esteem
-PRODUCT_NAME := cm_esteem
+PRODUCT_DEVICE := ms910
+PRODUCT_NAME := cm_ms910
 PRODUCT_BRAND := LGE
 PRODUCT_MODEL := LG-MS910
 PRODUCT_MANUFACTURER := LGE
@@ -27,7 +27,7 @@ PRODUCT_DEVICE=bryce \
 PRODUCT_NAME=bryce \
 BUILD_ID=LG-MS910-CM9 \
 BUILD_DISPLAY_ID=LG-MS910-ICS \
-BUILD_FINGERPRINT="MetroPCS/lge_bryce/MS910:4.0.3/ICS/ZVB.422A0D75:user/release-keys" \
-PRIVATE_BUILD_DESC="lge_bryce-user 4.0.3 ICS release-keys" \
+BUILD_FINGERPRINT="MetroPCS/lge_bryce/MS910:4.0.4/ICS/ZVB.422A0D75:user/release-keys" \
+PRIVATE_BUILD_DESC="lge_bryce-user 4.0.4 ICS release-keys" \
 TARGET_BUILD_TYPE=user \
 BUILD_NUMBER=${DATE} 

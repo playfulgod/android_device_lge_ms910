@@ -1,7 +1,7 @@
 # inherit from the proprietary version
--include vendor/lge/esteem/BoardConfigVendor.mk
+-include vendor/lge/ms910/BoardConfigVendor.mk
 
-TARGET_SPECIFIC_HEADER_PATH := device/lge/esteem/include
+TARGET_SPECIFIC_HEADER_PATH := device/lge/ms910/include
 
 TARGET_NO_BOOTLOADER := true
 
@@ -13,7 +13,9 @@ TARGET_CPU_ABI := armeabi
 TARGET_CPU_ABI2 := armeabi-v7a
 TARGET_ARCH_VARIANT := armv7-a-neon
 
-TARGET_BOOTLOADER_BOARD_NAME := esteem
+TARGET_BOOTLOADER_BOARD_NAME := ms910
+TARGET_BOARD_INFO_FILE := device/lge/ms910/board-info.txt
+
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 TARGET_USES_2G_VM_SPLIT := true
@@ -23,7 +25,9 @@ BOARD_KERNEL_BASE := 0x00200000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_PAGE_SIZE := 2048
 
-TARGET_PREBUILT_KERNEL := device/lge/esteem/kernel
+TARGET_KERNEL_CONFIG := plague_defconfig 
+#TARGET_KERNEL_SOURCE := kernel/lge/ms910
+TARGET_PREBUILT_KERNEL := device/lge/ms910/kernel
 
 ## Partition sizes
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
@@ -50,13 +54,13 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_HAS_SDCARD_INTERNAL := true
 
 # Recovery
-TARGET_PREBUILT_RECOVERY_KERNEL := device/lge/esteem/recovery/recovery_kernel
-BOARD_CUSTOM_GRAPHICS := ../../../device/lge/esteem/recovery/graphics.c
+TARGET_PREBUILT_RECOVERY_KERNEL := device/lge/ms910/recovery/recovery_kernel
+BOARD_CUSTOM_GRAPHICS := ../../../device/lge/ms910/recovery/graphics.c
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-# USB
-BOARD_USE_USB_MASS_STORAGE_SWITCH := true
-BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
+# UMS
+BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
 
 # Wifi related defines
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
@@ -68,45 +72,50 @@ WIFI_DRIVER_FW_AP_PATH      := "/vendor/firmware/fw_bcm4329_apsta.bin"
 WIFI_DRIVER_MODULE_ARG      := "firmware_path=/vendor/firmware/fw_bcm4329.bin nvram_path=/proc/calibration"
 WIFI_DRIVER_MODULE_NAME     := "bcm4329"
 
-# Audio
-BOARD_USES_GENERIC_AUDIO := false
-
-# Bluetooth
+# Audio & Bluetooth
+TARGET_PROVIDES_LIBAUDIO := true
+BOARD_USES_AUDIO_LEGACY := false
+BOARD_COMBO_DEVICE_SUPPORTED := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
+# RIL
+BOARD_PROVIDES_LIBRIL := true
+
 # GPS
+BOARD_USES_QCOM_LIBRPC := true
 BOARD_USES_QCOM_GPS := true
 BOARD_VENDOR_QCOM_AMSS_VERSION := 6225
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 # qcom
-BOARD_USES_QCOM_HARDWARE := true
-BOARD_USES_QCOM_LIBS := true
+#BOARD_USES_QCOM_HARDWARE := true
+#BOARD_USES_QCOM_LIBS := true
 BOARD_USES_QCOM_LIBRPC := true
 BOARD_USE_QCOM_PMEM := true
 
 # Graphics
 BOARD_USES_ADRENO_200 := true
-#BOARD_USE_LEGACY_TOUCHSCREEN := true
-#BOARD_EGL_CFG := device/lge/esteem/prebuilt/lib/egl/egl.cfg
-#BOARD_OVERLAY_FORMAT_YCbCr_420_SP := true
-#USE_OPENGL_RENDERER := true
+BOARD_USE_LEGACY_TOUCHSCREEN := true
+BOARD_EGL_CFG := device/lge/ms910/prebuilt/lib/egl/egl.cfg
+USE_OPENGL_RENDERER := true
 BOARD_USES_GENLOCK := true
-#BOARD_NO_RGBX_8888 := false
-#TARGET_USES_OVERLAY := true
-#COMMON_GLOBAL_CFLAGS += -DREFRESH_RATE=60
-#TARGET_FORCE_CPU_UPLOAD := true
-TARGET_QCOM_HDMI_OUT := true
-#BOARD_USE_FRAMEBUFFER_ALPHA_CHANNEL := true
+#TARGET_QCOM_HDMI_OUT := true
 
 # Camera
 BOARD_CAMERA_USE_GETBUFFERINFO := true
 
 # FM Radio
+BOARD_FM_DEVICE := bcm4329
 BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 
+# Enable JIT
+JS_ENGINE := v8
+HTTP := chrome
+WITH_JIT := true
+ENABLE_JSC_JIT := true
+
 # Misc
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
-TARGET_OTA_ASSERT_DEVICE := esteem,bryce,MS910
+TARGET_OTA_ASSERT_DEVICE := ms910,bryce,MS910
