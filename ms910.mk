@@ -3,7 +3,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-$(call inherit-product-if-exists, vendor/lge/ms910/device-vendor.mk)
+$(call inherit-product-if-exists, vendor/lge/ms910/ms910-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -124,7 +124,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
     debug.sf.hw=0 \
     ro.opengles.version=131072 \
     ro.config.hw_proximity=true \
-    ro.telephony.default_network=4 \
+    ro.telephony.default_network=12 \
     ro.com.google.clientidbase=android-metropcs-us \
     ro.cdma.home.operator.alpha=MetroPCS \
     ro.cdma.home.operator.numeric=310016 \
