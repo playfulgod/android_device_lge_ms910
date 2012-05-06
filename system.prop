@@ -42,7 +42,6 @@ ro.hdmi.enable=true
 #
 # system props for the data modules
 #
-ro.telephony.default_network=12
 persist.telephony.support_ipv4=true
 persist.telephony.support_ipv6=false
 ro.use_data_netmgrd=true
@@ -65,11 +64,6 @@ media.stagefright.enable-player=true
 media.stagefright.enable-meta=false
 media.stagefright.enable-scan=false
 media.stagefright.enable-http=true
-
-#
-# system prop for opengles version
-#
-ro.opengles.version=131072
 
 #
 # system prop for Bluetooth Dialup Networking
@@ -98,22 +92,8 @@ user.feature.lgresource=true
 user.feature.lgpoweroff=true
 user.feature.preload_so=true
 user.feature.preload_del=true
-user.feature.lock_sui=true
-user.feature.sui=true
 user.feature.lgpoweroff=true
-ro.setupwizard.mode=DISABLED
-ro.com.google.gmsversion=2.3_r6
-ro.config.notification_sound=Droid.ogg
-ro.cdma.home.operator.alpha=MetroPCS
-ro.cdma.home.operator.numeric=311660
-ro.com.google.clientidbase=android-lge
-ro.com.google.clientidbase.ms=android-metropcs-us
-ro.com.google.clientidbase.gmm=android-lge
-ro.com.google.clientidbase.yt=android-lge
-ro.com.google.clientidbase.am=android-lge
-ro.config.ringtone=DROID_Rollin.ogg
-ro.config.alarm_alert=Alarm_Beep_01.ogg
-net.bt.name=Android
+
 dalvik.vm.stack-trace-file=/data/anr/traces.txt
 dalvik.vm.execution-mode=int:jit
 

@@ -1,7 +1,7 @@
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/lge/esteem/BoardConfigVendor.mk
+-include vendor/lge/ms910/BoardConfigVendor.mk
 
 TARGET_NO_BOOTLOADER := true
 
@@ -15,7 +15,7 @@ TARGET_CPU_ABI := armeabi
 TARGET_CPU_ABI2 := armeabi-v7a
 TARGET_ARCH_VARIANT := armv7-a-neon
 
-TARGET_BOOTLOADER_BOARD_NAME := esteem
+TARGET_BOOTLOADER_BOARD_NAME := ms910
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 BOARD_KERNEL_CMDLINE := console=ttyMSM1 androidboot.hardware=bryce
@@ -37,13 +37,16 @@ TARGET_USERIMAGES_USE_EXT4 := true
 
 BOARD_HAS_SDCARD_INTERNAL := true
 
-TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
+#TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
 
-TARGET_PREBUILT_KERNEL := device/lge/esteem/kernel
+TARGET_PREBUILT_KERNEL := device/lge/ms910/kernel
+
+# RIL
+TARGET_PROVIDES_LIBRIL := true
 
 # Recovery
-TARGET_PREBUILT_RECOVERY_KERNEL := device/lge/esteem/recovery/recovery_kernel
-BOARD_CUSTOM_GRAPHICS := ../../../device/lge/esteem/recovery/graphics.c
+TARGET_PREBUILT_RECOVERY_KERNEL := device/lge/ms910/recovery/recovery_kernel
+BOARD_CUSTOM_GRAPHICS := ../../../device/lge/ms910/recovery/graphics.c
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Wifi related defines
@@ -56,9 +59,8 @@ WIFI_DRIVER_FW_AP_PATH      := "/vendor/firmware/fw_bcm4329_apsta.bin"
 WIFI_DRIVER_MODULE_ARG      := "firmware_path=/vendor/firmware/fw_bcm4329.bin nvram_path=/proc/calibration"
 WIFI_DRIVER_MODULE_NAME     := "wireless"
 
+# Audio
 BOARD_USES_GENERIC_AUDIO := false
-BOARD_USES_QCOM_VOIPMUTE := true
-BOARD_USES_QCOM_RESETALL := true
 
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
@@ -79,3 +81,13 @@ BOARD_OVERLAY_FORMAT_YCbCr_420_SP := true
 
 BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
+
+# Enable JIT
+JS_ENGINE := v8
+HTTP := chrome
+WITH_JIT := true
+ENABLE_JSC_JIT := true
+
+# UMS
+BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
