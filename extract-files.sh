@@ -85,6 +85,9 @@ adb pull /system/lib/libgsl.so  ../../../vendor/$VENDOR/$DEVICE/proprietary/lib/
 
 # Sensors
 adb pull /system/lib/hw/sensors.default.so  ../../../vendor/$VENDOR/$DEVICE/proprietary/lib/hw
+adb pull /system/lib/hw/lights.msm7k.so  ../../../vendor/$VENDOR/$DEVICE/proprietary/lib/hw
+adb pull /system/lib/hw/gralloc.msm7k.so  ../../../vendor/$VENDOR/$DEVICE/proprietary/lib/hw
+
 
 # OMX
 adb pull /system/lib/libOmxEvrcEnc.so  ../../../vendor/$VENDOR/$DEVICE/proprietary/lib
@@ -261,6 +264,7 @@ PRODUCT_COPY_FILES += \\
 # RIL
 PRODUCT_COPY_FILES += \\
     vendor/__VENDOR__/__DEVICE__/proprietary/bin/rild:/system/bin/rild \\
+    vendor/__VENDOR__/__DEVICE__/proprietary/lib/libril.so:/obj/lib/libril.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/lib/libril.so:/system/lib/libril.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/lib/libril-qc-1.so:/system/lib/libril-qc-1.so \\
     vendor/__VENDOR__/__DEVICE__/proprietary/lib/libreference-ril.so:/system/lib/libreference-ril.so \\
