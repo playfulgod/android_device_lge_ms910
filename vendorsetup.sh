@@ -15,4 +15,4 @@
 #
 
 add_lunch_combo full_ms910-eng
-add_lunch_combo cm_ms910-userdebug
+#add_lunch_combo cm_ms910-userdebug
