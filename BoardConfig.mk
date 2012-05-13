@@ -97,7 +97,7 @@ BOARD_EGL_CFG := device/lge/ms910/prebuilt/lib/egl/egl.cfg
 
 #ICS settings
 DISABLE_DEXPREOPT := true
-USE_OPENGL_RENDERER := true
+USE_OPENGL_RENDERER := false
 BOARD_NO_PAGE_FLIPPING := true
 COPYBIT_MSM7x30 := true
 BUILD_OLD_LIBCAMERA:= true
