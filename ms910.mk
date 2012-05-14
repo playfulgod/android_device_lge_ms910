@@ -65,6 +65,7 @@ PRODUCT_PACKAGES += \
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+    frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/base/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
@@ -77,7 +78,8 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml
+    frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
+    frameworks/base/data/etc/com.tmobile.software.themes.xml:system/etc//permissions/com.tmobile.software.themes.xml
 
 # chargermode
 PRODUCT_COPY_FILES += \
@@ -181,7 +183,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
     debug.sf.hw=0 \
     ro.opengles.version=131072 \
     ro.config.hw_proximity=true \
-    ro.telephony.default_network=12 \
+    ro.telephony.default_network=4 \
     ro.com.google.clientidbase=android-metropcs-us \
     ro.cdma.home.operator.alpha=MetroPCS \
     ro.cdma.home.operator.numeric=310016 \
