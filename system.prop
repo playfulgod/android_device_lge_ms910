@@ -22,7 +22,6 @@ DEVICE_PROVISIONED=1
 debug.sf.hw=1
 dalvik.vm.heapsize=96m
 ro.dev.dmm=1
-dev.dmm.dpd.trigger_delay=30user.feature.lgpoweroff=true
 dev.pm.dyn_samplingrate=1
 
 #
@@ -87,16 +86,6 @@ ro.ril.wake_lock_timeout = 45000
 
 # system prop for tethering denied
 ro.tether.denied=false
-
-#
-# ADDITIONAL_BUILD_PROPERTIES
-#
-user.feature.lgdrm=true
-user.feature.lgresource=true
-user.feature.lgpoweroff=true
-user.feature.preload_so=true
-user.feature.preload_del=true
-user.feature.lgpoweroff=true
 
 dalvik.vm.stack-trace-file=/data/anr/traces.txt
 dalvik.vm.execution-mode=int:jit

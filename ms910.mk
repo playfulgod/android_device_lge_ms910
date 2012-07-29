@@ -129,7 +129,7 @@ PRODUCT_COPY_FILES += \
 # HW
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/lib/hw/sensors.default.so:system/lib/hw/sensors.default.so \
-    $(LOCAL_PATH)/prebuilt/lib/hw/lights.msm7k.so:system/lib/hw/lights.msm7k.so 
+    $(LOCAL_PATH)/prebuilt/lib/hw/lights.msm7k.so:system/lib/hw/lights.msm7x30.so 
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/bin/BCM4329B1_002.002.023.0589.0634.hcd:system/bin/bcm4329.hcd \
@@ -191,11 +191,16 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.cdma.voicemail.number=mine \
     ro.com.google.locationfeatures=1 \
     keyguard.no_require_sim=false \
-    ro.sf.lcd_density=240 \
+    ro.sf.lcd_density=210 \
     ro.telephony.ril_class=LGEQualcommUiccRIL \
     ro.telephony.ril.v3=facilitylock,datacall,icccardstatus,singlepdp,qcomuiccstack
 
 # Common Qualcomm scripts
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh 
+    $(LOCAL_PATH)/prebuilt/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
+    $(LOCAL_PATH)/prebuilt/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
+    $(LOCAL_PATH)/prebuilt/etc/init.qcom.coex.sh:system/etc/init.qcom.coex.sh \
+    $(LOCAL_PATH)/prebuilt/etc/init.qcom.fm.sh:system/etc/init.fm.sh \
+    $(LOCAL_PATH)/prebuilt/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh \
+    $(LOCAL_PATH)/prebuilt/etc/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh
 
