@@ -26,11 +26,21 @@ Now initialized the repository and pull the source (with my repos attached):
 
     $ cd ~/android/system/
     
-    $ repo init -u git://github.com/playfulgod/android.git -b ics
+    $ repo init -u git://github.com/CyanogenMod/android.git -b ics
     
     $ repo sync
 
 Depending on your connection, this might take awhile.
+
+Getting my LG Esteem 4G LGMS910 repo
+	
+	$ cd ~/android/system/device/
+
+	$ mkdir lge
+
+	$ cd lge
+
+	$ git clone https://github.com/playfulgod/android_device_lge_ms910.git ms910
 
 WIP - Extract necessary binaries and proprietary files 
 ------------------------------------------------
@@ -39,7 +49,7 @@ We will need to reuse some proprietary files from the stock ROM:
 
     $ cd
     
-    $ cd ~/android/system/device/lge/esteem
+    $ cd ~/android/system/device/lge/ms910
     
     $ ./extract-files.sh
 
@@ -61,12 +71,12 @@ Now, we build (system being your work directory):
 
 To build for the LG Esteem:
     
-    $ . build/envsetup.sh && brunch esteem
+    $ . build/envsetup.sh && brunch ms910
 
 
 Installing CM9
 ---------------
-If the build was successful, you can now take the update zip found in out/target/product/esteem/ and flash using a custom recovery. Make sure to grab the latest Gapps to complete the experience.
+If the build was successful, you can now take the update zip found in out/target/product/ms910/ and flash using a custom recovery. Make sure to grab the latest Gapps to complete the experience.
 
 When you want to rebuild with new changes to the BoardConfig.mk or after syncing to the latest CM src make sure to do the following before you recompile.
 

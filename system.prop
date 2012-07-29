@@ -3,6 +3,7 @@
 #
 #rild.libpath=/system/lib/libril-qc-1.so
 rild.libpath=/system/lib/libmultimode-ril.so
+mobiledata.interfaces=rmnet_sdio0,rmnet_sdio1
 debug.qctwa.statusbar=1
 debug.qctwa.preservebuf=1
 debug.qc.hardware=true
@@ -104,7 +105,6 @@ video.accelerate.hw=1
 ro.media.dec.jpeg.memcap=8000000
 ro.media.enc.hprof.vid.bps=8000000
 ro.media.enc.jpeg.quality=100
-user.feature.lgpoweroff=false
 ro.ril.hsxpa=2
 ro.ril.gprsclass=10
 ro.ril.hep=1

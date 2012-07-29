@@ -7,60 +7,43 @@ $(call inherit-product-if-exists, vendor/lge/ms910/ms910-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+$(call inherit-product, build/target/product/full.mk)
+
+# use high-density artwork where available
+PRODUCT_AAPT_CONFIG := hdpi
+
 # Init files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.bryce.rc:root/init.bryce.rc \
     $(LOCAL_PATH)/ueventd.bryce.rc:root/ueventd.bryce.rc \
     $(LOCAL_PATH)/init.bryce.sh:root/init.bryce.sh \
-    $(LOCAL_PATH)/recovery/postrecoveryboot.sh:root/sbin/postrecoveryboot.sh
+    $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
-else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
-$(call inherit-product, build/target/product/full.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full.mk)
-
+# HW HALS
 PRODUCT_PACKAGES += \
-    Gallery3d \
-    SpareParts \
-    Term \
-    gps.msm7x30 \
+    hdmid \
+    libgenlock \
+    libmemalloc \
+    liboverlay \
+    libtilerenderer \
+    gps.ms910 \
     lights.msm7x30 \
     librs_jni \
     gralloc.msm7x30 \
     hwcomposer.msm7x30 \
     copybit.msm7x30 \
-    libmemalloc \
-    libgenlock \
-    libOmxCore \
-    libOmxVenc \
+    com.android.future.usb.accessory 
+ 
+# OMX
+PRODUCT_PACKAGES += \
+    libstagefrighthw \
+    libdivxdrmdecrypt \
     libOmxVdec \
-    liboverlay \
-    libtilerenderer \
-    com.android.future.usb.accessory \
-    Torch
-
-# HDMI
-PRODUCT_PACKAGES += \
-    hdmid
-
-# Live Wallpapers
-PRODUCT_PACKAGES += \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    VisualizationWallpapers \
-    librs_jni
-
-# Filesystem management tools
-PRODUCT_PACKAGES += \
-    make_ext4fs \
-    setup_fs
+    libOmxVenc \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libmm-omxcore \
+    libOmxCore 
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -81,50 +64,13 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/base/data/etc/com.tmobile.software.themes.xml:system/etc//permissions/com.tmobile.software.themes.xml
 
-# chargermode
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/chargerimages/battery_wait_ani_01.rle:root/chargerimages/battery_wait_ani_01.rle \
-    $(LOCAL_PATH)/chargerimages/battery_wait_ani_02.rle:root/chargerimages/battery_wait_ani_02.rle \
-    $(LOCAL_PATH)/chargerimages/charger_bg.rle:root/chargerimages/charger_bg.rle \
-    $(LOCAL_PATH)/chargerimages/battery_charging_01.rle:root/chargerimages/battery_charging_01.rle \
-    $(LOCAL_PATH)/chargerimages/battery_charging_02.rle:root/chargerimages/battery_charging_02.rle \
-    $(LOCAL_PATH)/chargerimages/battery_charging_03.rle:root/chargerimages/battery_cht_ani_01.rle \
-    $(LOCAL_PATH)/chargerimages/battery_wait_ani_02.rle:root/chargerimages/battery_wait_ani_02.rle \
-    $(LOCAL_PATH)/chargerimages/black_bg.rle:root/chargerimages/black_bg.rle \
-    $(LOCAL_PATH)/chargerimages/battery_charging:root/sbin/battery_charging
+# Charger mode
+PRODUCT_PACKAGES += \
+    charger \
+    charger_res_images
 
-# use high-density artwork where available
-PRODUCT_LOCALES += hdpi
-
-# Kernel modules
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/lib/modules/ansi_cprng.ko:system/lib/modules/ansirng.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/cifs.ko:system/lib/modules/cifs.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/cls_flow.ko:system/lib/modules/cls_flow.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/cpaccess.ko:system/lib/modules/cpaccess.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/dal_remotetest.ko:system/lib/modules/dal_remotetest.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/dma_test.ko:system/lib/modules/dma_test.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/evbug.ko:system/lib/modules/evobug.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/hdmicec.ko:system/lib/modules/hdmicec.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/librasdioif.ko:system/lib/modules/librasdioif.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/mtd_erasepart.ko:system/lib/modules/mtd_erasepart.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/mtd_nandecctest.ko:system/lib/modules/mtd_nandecctest.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/mtd_oobtest.ko:system/lib/modules/mtd_obbtest.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/mtd_pagetest.ko:system/lib/modules/mtd_pagetest.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/mtd_readtest.ko:system/lib/modules/mtd_readtest.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/mtd_speedtest.ko:system/lib/modules/mtd_speedtest.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/mtd_stresstest.ko:system/lib/modules/mtd_stresstest.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/mtd_subpagetest.ko:system/lib/modules/mtd_subpagetest.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/mtd_torturetest.ko:system/lib/modules/mtd_torturetest.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/oprofile.ko:system/lib/modules/oprofile.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/qce.ko:system/lib/modules/qce.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/qcedev.ko:system/lib/modules/qcedev.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/qcrypto.ko:system/lib/modules/qcrypo.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/reset_modem.ko:system/lib/modules/reset_modem.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/sch_dsmark.ko:system/lib/modules/sch_dsmark.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/tun.ko:system/lib/modules/tun.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/wireless.ko:system/lib/modules/wireless.ko
+# Kernel Modules
+$(call inherit-product-if-exists, $(LOCAL_PATH)/prebuilt/modules/modules.mk)
 
 # HW
 PRODUCT_COPY_FILES += \
@@ -140,8 +86,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
     $(LOCAL_PATH)/prebuilt/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
     $(LOCAL_PATH)/prebuilt/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_android.so \
-    $(LOCAL_PATH)/prebuilt/lib/egl/libq3dtools_adreno200.so:system/lib/libq3dtools_adreno200.so \
-    $(LOCAL_PATH)/prebuilt/lib/egl//eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
+    $(LOCAL_PATH)/prebuilt/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so \
+    $(LOCAL_PATH)/prebuilt/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
     $(LOCAL_PATH)/prebuilt/lib/egl/egl.cfg:system/lib/egl/egl.cfg \
     $(LOCAL_PATH)/prebuilt/lib/libgsl.so:system/lib/libgsl.so \
     $(LOCAL_PATH)/prebuilt/lib/libOpenVG.so:system/lib/OpenVG.so \
@@ -172,15 +118,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/usr/idc/touch_keypad.idc:system/usr/idc/touch_keypad.idc \
     $(LOCAL_PATH)/prebuilt/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc 
 
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_ms910
-PRODUCT_DEVICE := ms910
-
-PRODUCT_DEFAULT_LANGUAGE := en_US
-PRODUCT_DEFAULT_REGION := US
-
 PRODUCT_PROPERTY_OVERRIDES := \
-    debug.sf.hw=0 \
+    debug.sf.hw=1 \
     ro.opengles.version=131072 \
     ro.config.hw_proximity=true \
     ro.telephony.default_network=4 \
@@ -193,7 +132,12 @@ PRODUCT_PROPERTY_OVERRIDES := \
     keyguard.no_require_sim=false \
     ro.sf.lcd_density=210 \
     ro.telephony.ril_class=LGEQualcommUiccRIL \
-    ro.telephony.ril.v3=facilitylock,datacall,icccardstatus,singlepdp,qcomuiccstack
+    ro.telephony.ril.v3=qcomuiccstack \
+	telephony.lteOnCDMADevice=1 \
+	wifi.interface=wlan0 \
+    com.qc.hdmi_out=true \
+    ro.bt.bdaddr_path=/data/misc/bd_addr \
+    ro.product.camera=lgms910 
 
 # Common Qualcomm scripts
 PRODUCT_COPY_FILES += \
@@ -204,3 +148,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh \
     $(LOCAL_PATH)/prebuilt/etc/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh
 
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
+PRODUCT_NAME := full_ms910
+PRODUCT_DEVICE := ms910
+PRODUCT_MODEL := LG-Esteem-4G
+PRODUCT_MANUFACTURER := LGE
+
+PRODUCT_DEFAULT_LANGUAGE := en_US
+PRODUCT_DEFAULT_REGION := US
