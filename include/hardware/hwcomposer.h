@@ -66,7 +66,21 @@ enum {
      * SurfaceFlinger will only honor this flag when the layer has no blending
      *
      */
+#ifdef QCOM_HARDWARE
+    HWC_HINT_CLEAR_FB       = 0x00000002,
+
+    /*
+     * HWC sets the HWC_HINT_DRAW_S3D_SS or HWC_HINT_DRAW_S3D_TB to tell
+     * Surfaceflinger that currently a S3D video layer is being drawn so
+     * convert the other layers to S3D format of Video while composing
+     *
+     */
+    HWC_HINT_DRAW_S3D_SIDE_BY_SIDE    = 0x00000004,
+    HWC_HINT_DRAW_S3D_TOP_BOTTOM      = 0x00000008
+#else
     HWC_HINT_CLEAR_FB       = 0x00000002
+#endif
+
 };
 
 /*
@@ -80,12 +94,6 @@ enum {
      * by SurfaceFlinger (just as if compositionType was set to HWC_OVERLAY).
      */
     HWC_SKIP_LAYER         = 0x00000001,
-
-    /* implementation-specific private usage flags */
-    HWC_FLAGS_PRIVATE_0       = 0x10000000,
-    HWC_FLAGS_PRIVATE_1       = 0x20000000,
-    HWC_FLAGS_PRIVATE_2       = 0x40000000,
-    HWC_FLAGS_PRIVATE_3       = 0x80000000,
 };
 
 /*
@@ -165,9 +173,11 @@ typedef struct hwc_layer {
 
     /* blending to apply during composition */
     int32_t blending;
-    
+
+#ifdef QCOM_HARDWARE
     /* alpha value of the layer */
     int32_t alpha;
+#endif
 
     /* area of the source to consider, the origin is the top-left corner of
      * the buffer */
@@ -197,11 +207,14 @@ enum {
      */
     HWC_GEOMETRY_CHANGED = 0x00000001,
 
+#ifdef QCOM_HARDWARE
     /*
      * HWC_SKIP_COMPOSITION is set by the HWC to indicate to SurfaceFlinger to
      * skip composition for this iteration.
      */
     HWC_SKIP_COMPOSITION = 0x00000002
+#endif
+
 };
 
 /*
@@ -346,11 +359,13 @@ typedef struct hwc_composer_device {
 
     void* reserved_proc[6];
 
+#ifdef QCOM_HARDWARE
     /*
      * This API is called by Surfaceflinger to inform the HWC about the
-     * HDMI status.
+     * custom events(external display).
      */
-    void (*enableHDMIOutput)(struct hwc_composer_device* dev, bool enable);
+    void (*perform)(struct hwc_composer_device* dev, int event, int value);
+#endif
 
 } hwc_composer_device_t;
 
@@ -373,4 +388,3 @@ static inline int hwc_close(hwc_composer_device_t* device) {
 __END_DECLS
 
 #endif /* ANDROID_INCLUDE_HARDWARE_HWCOMPOSER_H */
-

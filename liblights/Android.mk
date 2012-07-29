@@ -25,7 +25,7 @@ LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 
 LOCAL_SHARED_LIBRARIES := liblog
 
-LOCAL_MODULE := lights.iprj
+LOCAL_MODULE := lights.bryce
 
 LOCAL_MODULE_TAGS := optional
 

@@ -1,7 +1,7 @@
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
-$(call inherit-product-if-exists, vendor/lge/ms910/BoardConfigVendor.mk)
+-include vendor/lge/ms910/BoardConfigVendor.mk
 
 TARGET_SPECIFIC_HEADER_PATH := device/lge/ms910/include
 
@@ -72,7 +72,7 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
 # RIL
-#BOARD_PROVIDES_LIBRIL := true
+BOARD_PROVIDES_LIBRIL := true
 
 USE_OPENGL_RENDERER := true
 
@@ -86,6 +86,7 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 # QCOM Stuff
+BOARD_USES_QCOM_HARDWARE := true
 TARGET_USES_OVERLAY := true
 TARGET_HAVE_BYPASS := true
 TARGET_USES_C2D_COMPOSITION := true

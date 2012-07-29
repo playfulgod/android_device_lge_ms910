@@ -7,6 +7,15 @@ $(call inherit-product-if-exists, vendor/lge/ms910/ms910-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+LOCAL_KERNEL := $(LOCAL_PATH)/kernel
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel
+
 $(call inherit-product, build/target/product/full.mk)
 
 # use high-density artwork where available

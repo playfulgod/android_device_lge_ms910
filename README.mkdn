@@ -1,9 +1,7 @@
-#### WORK IN PROGRESS #####
-
 HOW-TO BUILD:
 =============
 
-**This short guide assumes you're on Ubuntu 11.04**
+**This short guide assumes you're on Ubuntu 11.04 or above**
 
 Getting the (right) source
 --------------------------
@@ -42,7 +40,7 @@ Getting my LG Esteem 4G LGMS910 repo
 
 	$ git clone https://github.com/playfulgod/android_device_lge_ms910.git ms910
 
-WIP - Extract necessary binaries and proprietary files 
+Extract necessary binaries and proprietary files 
 ------------------------------------------------
 
 We will need to reuse some proprietary files from the stock ROM:
