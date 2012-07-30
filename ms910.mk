@@ -54,6 +54,16 @@ PRODUCT_PACKAGES += \
     libmm-omxcore \
     libOmxCore 
 
+# Charger mode
+#PRODUCT_PACKAGES += \
+    charger \
+    charger_res_images
+
+PRODUCT_PACKAGES += \
+    hcitool \
+    hciconfig \
+    hwaddrs
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
@@ -72,11 +82,6 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/base/data/etc/com.tmobile.software.themes.xml:system/etc//permissions/com.tmobile.software.themes.xml
-
-# Charger mode
-#PRODUCT_PACKAGES += \
-    charger \
-    charger_res_images
 
 # Kernel Modules
 $(call inherit-product-if-exists, $(LOCAL_PATH)/prebuilt/modules/modules.mk)
