@@ -19,7 +19,7 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, build/target/product/full.mk)
 
 # use high-density artwork where available
-PRODUCT_AAPT_CONFIG := hdpi
+PRODUCT_LOCALES += hdpi
 
 # Init files
 PRODUCT_COPY_FILES += \
@@ -74,7 +74,7 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/com.tmobile.software.themes.xml:system/etc//permissions/com.tmobile.software.themes.xml
 
 # Charger mode
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     charger \
     charger_res_images
 
@@ -99,7 +99,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
     $(LOCAL_PATH)/prebuilt/lib/egl/egl.cfg:system/lib/egl/egl.cfg \
     $(LOCAL_PATH)/prebuilt/lib/libgsl.so:system/lib/libgsl.so \
-    $(LOCAL_PATH)/prebuilt/lib/libOpenVG.so:system/lib/OpenVG.so \
+    $(LOCAL_PATH)/prebuilt/lib/libOpenVG.so:system/lib/libOpenVG.so \
     $(LOCAL_PATH)/prebuilt/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so
 
 # SDCard
@@ -142,10 +142,8 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.sf.lcd_density=210 \
     ro.telephony.ril_class=LGEQualcommUiccRIL \
     ro.telephony.ril.v3=qcomuiccstack \
-	telephony.lteOnCDMADevice=1 \
 	wifi.interface=wlan0 \
     com.qc.hdmi_out=true \
-    ro.bt.bdaddr_path=/data/misc/bd_addr \
     ro.product.camera=lgms910 
 
 # Common Qualcomm scripts
