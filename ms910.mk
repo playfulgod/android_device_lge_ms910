@@ -19,7 +19,10 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, build/target/product/full.mk)
 
 # use high-density artwork where available
-PRODUCT_LOCALES += hdpi
+PRODUCT_AAPT_CONFIG := normal hdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
+
+$(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 
 # Init files
 PRODUCT_COPY_FILES += \
@@ -28,20 +31,24 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.bryce.sh:root/init.bryce.sh \
     $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
 
-# HW HALS
+# Display
 PRODUCT_PACKAGES += \
     hdmid \
+    copybit.msm7x30 \
+    gralloc.msm7k \
+    hwcomposer.msm7x30 \
     libgenlock \
     libmemalloc \
     liboverlay \
-    libtilerenderer \
+    libQcomUI \
+    libtilerenderer
+
+# Sensors, GPS, Misc
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory \
     gps.ms910 \
-    lights.msm7x30 \
-    librs_jni \
-    gralloc.msm7x30 \
-    hwcomposer.msm7x30 \
-    copybit.msm7x30 \
-    com.android.future.usb.accessory 
+    lights.msm7k \
+    sensors.default
  
 # OMX
 PRODUCT_PACKAGES += \
@@ -54,15 +61,23 @@ PRODUCT_PACKAGES += \
     libmm-omxcore \
     libOmxCore 
 
+# Audio
+PRODUCT_PACKAGES += \
+    audio.a2dp.default \
+    audio_policy.msm7x30 \
+    audio.primary.msm7x30 \
+    libaudioutils
+
 # Charger mode
 #PRODUCT_PACKAGES += \
     charger \
     charger_res_images
 
 PRODUCT_PACKAGES += \
+	hwaddrs.ms910 \
     hcitool \
-    hciconfig \
-    hwaddrs
+    hciconfig
+
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -89,7 +104,8 @@ $(call inherit-product-if-exists, $(LOCAL_PATH)/prebuilt/modules/modules.mk)
 # HW
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/lib/hw/sensors.default.so:system/lib/hw/sensors.default.so \
-    $(LOCAL_PATH)/prebuilt/lib/hw/lights.msm7k.so:system/lib/hw/lights.msm7x30.so 
+    $(LOCAL_PATH)/prebuilt/lib/hw/gralloc.msm7k.so:system/lib/hw/gralloc.msm7k.so \
+    $(LOCAL_PATH)/prebuilt/lib/hw/lights.msm7k.so:system/lib/hw/lights.msm7k.so 
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/bin/BCM4329B1_002.002.023.0589.0634.hcd:system/bin/bcm4329.hcd \
@@ -104,6 +120,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
     $(LOCAL_PATH)/prebuilt/lib/egl/egl.cfg:system/lib/egl/egl.cfg \
     $(LOCAL_PATH)/prebuilt/lib/libgsl.so:system/lib/libgsl.so \
+    $(LOCAL_PATH)/prebuilt/lib/libC2D2.so:system/lib/libC2D2.so \
     $(LOCAL_PATH)/prebuilt/lib/libOpenVG.so:system/lib/libOpenVG.so \
     $(LOCAL_PATH)/prebuilt/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so
 
