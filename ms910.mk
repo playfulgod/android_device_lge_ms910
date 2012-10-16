@@ -9,6 +9,8 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 LOCAL_KERNEL := $(LOCAL_PATH)/kernel
+# Kernel Modules
+$(call inherit-product-if-exists, $(LOCAL_PATH)/prebuilt/modules/modules.mk)
 else
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -46,8 +48,8 @@ PRODUCT_PACKAGES += \
 # Sensors, GPS, Misc
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
-    gps.ms910 \
-    lights.msm7k \
+    gps.bryce \
+    lights.bryce \
     sensors.default
  
 # OMX
@@ -78,7 +80,6 @@ PRODUCT_PACKAGES += \
     hcitool \
     hciconfig
 
-
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
@@ -97,9 +98,6 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/base/data/etc/com.tmobile.software.themes.xml:system/etc//permissions/com.tmobile.software.themes.xml
-
-# Kernel Modules
-$(call inherit-product-if-exists, $(LOCAL_PATH)/prebuilt/modules/modules.mk)
 
 # HW
 PRODUCT_COPY_FILES += \
@@ -122,7 +120,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/lib/libgsl.so:system/lib/libgsl.so \
     $(LOCAL_PATH)/prebuilt/lib/libC2D2.so:system/lib/libC2D2.so \
     $(LOCAL_PATH)/prebuilt/lib/libOpenVG.so:system/lib/libOpenVG.so \
-    $(LOCAL_PATH)/prebuilt/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so
+    $(LOCAL_PATH)/prebuilt/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so 
+#	$(LOCAL_PATH)/prebuilt/lib/libQcomUI.so:obj/lib/libQcomUI.so
 
 # SDCard
 PRODUCT_COPY_FILES += \
@@ -153,7 +152,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
     debug.sf.hw=1 \
     ro.opengles.version=131072 \
     ro.config.hw_proximity=true \
-    ro.telephony.default_network=4 \
+    ro.telephony.default_network=8 \
     ro.com.google.clientidbase=android-metropcs-us \
     ro.cdma.home.operator.alpha=MetroPCS \
     ro.cdma.home.operator.numeric=310016 \
@@ -166,7 +165,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.telephony.ril.v3=qcomuiccstack \
 	wifi.interface=wlan0 \
     com.qc.hdmi_out=true \
-    ro.product.camera=lgms910 
+    ro.product.camera=bryce 
 
 # Common Qualcomm scripts
 PRODUCT_COPY_FILES += \
