@@ -76,7 +76,7 @@ PRODUCT_PACKAGES += \
     charger_res_images
 
 PRODUCT_PACKAGES += \
-	hwaddrs.ms910 \
+    hwaddrs.ms910 \
     hcitool \
     hciconfig
 
@@ -162,7 +162,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.sf.lcd_density=210 \
     ro.telephony.ril_class=LGEQualcommUiccRIL \
     ro.telephony.ril.v3=qcomuiccstack \
-	wifi.interface=wlan0 \
+    wifi.interface=wlan0 \
     com.qc.hdmi_out=true \
     ro.product.camera=bryce 
 
