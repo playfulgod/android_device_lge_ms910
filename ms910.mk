@@ -121,7 +121,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/lib/libC2D2.so:system/lib/libC2D2.so \
     $(LOCAL_PATH)/prebuilt/lib/libOpenVG.so:system/lib/libOpenVG.so \
     $(LOCAL_PATH)/prebuilt/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so 
-#	$(LOCAL_PATH)/prebuilt/lib/libQcomUI.so:obj/lib/libQcomUI.so
 
 # SDCard
 PRODUCT_COPY_FILES += \
