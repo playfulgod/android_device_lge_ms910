@@ -29,6 +29,7 @@ $(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 
 # Init files
 PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/init.rc:root/init.rc \
     $(LOCAL_PATH)/init.bryce.rc:root/init.bryce.rc \
     $(LOCAL_PATH)/ueventd.bryce.rc:root/ueventd.bryce.rc \
     $(LOCAL_PATH)/init.bryce.sh:root/init.bryce.sh \
@@ -43,7 +44,7 @@ PRODUCT_PACKAGES += \
     libgenlock \
     libmemalloc \
     liboverlay \
-#    libQcomUI \
+    libQcomUI \
     libtilerenderer
 
 # Sensors, GPS, Misc
@@ -160,7 +161,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.telephony.default_network=8 \
     ro.com.google.clientidbase=android-metropcs-us \
     ro.cdma.home.operator.alpha=MetroPCS \
-    ro.cdma.home.operator.numeric=310016 \
+    ro.cdma.home.operator.numeric=311660 \
     ro.config.cdma_subscription=1 \
     ro.cdma.voicemail.number=mine \
     ro.com.google.locationfeatures=1 \
