@@ -1,4 +1,5 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product, vendor/cm/config/common.mk)
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
@@ -37,12 +38,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     hdmid \
     copybit.msm7x30 \
-    gralloc.msm7k \
+    gralloc.msm7x30 \
     hwcomposer.msm7x30 \
     libgenlock \
     libmemalloc \
     liboverlay \
-    libQcomUI \
+#    libQcomUI \
     libtilerenderer
 
 # Sensors, GPS, Misc
@@ -79,6 +80,11 @@ PRODUCT_PACKAGES += \
     hwaddrs.ms910 \
     hcitool \
     hciconfig
+
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+    make_ext4fs \
+    setup_fs
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -176,10 +182,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/etc/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_ms910
-PRODUCT_DEVICE := ms910
-PRODUCT_MODEL := LG-Esteem-4G
-PRODUCT_MANUFACTURER := LGE
 
 PRODUCT_DEFAULT_LANGUAGE := en_US
 PRODUCT_DEFAULT_REGION := US
