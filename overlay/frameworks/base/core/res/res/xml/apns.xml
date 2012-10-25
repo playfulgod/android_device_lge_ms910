@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<apns version="6">
+    <apn carrier="NCC" mcc="311" mnc="261" user="ncc" password="ncc" apn="internet" type="" ipversion="4" />
+    <apn carrier="TESTIMS" mcc="001" mnc="01" user="ncc" password="ncc" apn="VZWIMS" type="ims" ipversion="4,6" inactivitytime="1439" enabled="1" apnid="1" />
+    <apn carrier="TESTADMIN" mcc="001" mnc="01" user="ncc" password="ncc" apn="VZWADMIN" type="admin" ipversion="4" inactivitytime="1439" enabled="1" apnid="2" />
+    <apn carrier="TESTINTERNET" mcc="001" mnc="01" user="ncc" password="ncc" apn="VZWINTERNET" type="internet" ipversion="4,6" inactivitytime="1439" enabled="1" apnid="3" />
+    <apn carrier="TESTAPP" mcc="001" mnc="01" user="ncc" password="ncc" apn="VZWAPP" type="vzwapp" ipversion="4,6" inactivitytime="1439" enabled="1" apnid="4" />
+    <apn carrier="TESTIMS_2" mcc="001" mnc="010" user="ncc" password="ncc" apn="VZWIMS" type="ims" ipversion="4,6" inactivitytime="1439" enabled="0" apnid="1" />
+    <apn carrier="TESTADMIN_2" mcc="001" mnc="010" user="ncc" password="ncc" apn="VZWADMIN" type="admin" ipversion="4" inactivitytime="1439" enabled="0" apnid="2" />
+    <apn carrier="TESTINTERNET_2" mcc="001" mnc="010" user="ncc" password="ncc" apn="VZWINTERNET" type="internet" ipversion="4,6" inactivitytime="1439" enabled="1" apnid="3" />
+    <apn carrier="TESTAPP_2" mcc="001" mnc="010" user="ncc" password="ncc" apn="VZWAPP" type="vzwapp" ipversion="4,6" inactivitytime="1439" enabled="0" apnid="4" />
+    <apn carrier="METROINTERNET" mcc="311" mnc="660" user="ncc" password="ncc" apn="internet.metropcs.mnc660.mcc311.gprs" type="internet" ipversion="4" inactivitytime="1439" enabled="1" apnid="3" mmsc="http://mms.metropcs.net:3128/mmsc" />
+    <apn carrier="METROINTERNET" mcc="311" mnc="66" user="ncc" password="ncc" apn="internet.metropcs.mnc660.mcc311.gprs" type="internet" ipversion="4" inactivitytime="1439" enabled="1" apnid="3" mmsc="http://mms.metropcs.net:3128/mmsc" />
+    <apn carrier="TESTIMS" mcc="262" mnc="800" user="ncc" password="ncc" apn="IMSTEST" type="ims" ipversion="4,6" inactivitytime="1439" enabled="1" apnid="1" />
+    <apn carrier="TESTADMIN" mcc="262" mnc="800" user="ncc" password="ncc" apn="ADMINTEST" type="admin" ipversion="4" inactivitytime="1439" enabled="1" apnid="2" />
+    <apn carrier="TESTINTERNET" mcc="262" mnc="800" user="ncc" password="ncc" apn="INTERNETTEST" type="internet" ipversion="4,6" inactivitytime="1439" enabled="1" apnid="3" />
+</apns>
