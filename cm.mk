@@ -4,13 +4,15 @@ PRODUCT_RELEASE_NAME := LG Esteem 4G
 ## Specify phone tech before including full_phone
 $(call inherit-product, vendor/cm/config/cdma.mk)
 
-TARGET_BOOTANIMATION_NAME := vertical-480x800
+# Boot animation
+TARGET_SCREEN_HEIGHT := 800
+TARGET_SCREEN_WIDTH := 480
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/lge/ms910/ms910.mk)
+$(call inherit-product, device/lge/ms910/full_ms910.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := ms910

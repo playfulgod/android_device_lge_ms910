@@ -68,9 +68,9 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
 BOARD_WLAN_DEVICE           := bcm4329
-WIFI_DRIVER_FW_STA_PATH := "/vendor/firmware/fw_bcm4329.bin"
-WIFI_DRIVER_FW_AP_PATH := "/vendor/firmware/fw_bcm4329_apsta.bin"
-WIFI_DRIVER_MODULE_ARG := "firmware_path=/vendor/firmware/fw_bcm4329.bin nvram_path=/proc/calibration"
+WIFI_DRIVER_FW_STA_PATH := "/system/etc/wl/rtecdc.bin"
+WIFI_DRIVER_FW_AP_PATH  := "/system/etc/wl/rtecdc_apsta.bin"
+WIFI_DRIVER_MODULE_ARG  := "firmware_path=/etc/firmware/rtecdc.bin nvram_path=/etc/wl/nvram.txt config_path=/data/misc/wifi/config"
 WIFI_DRIVER_MODULE_NAME := "wireless"
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wireless.ko"
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
@@ -122,7 +122,6 @@ TARGET_HARDWARE_3D := true
 BOARD_USES_GENLOCK := true
 COMMON_GLOBAL_CFLAGS += -DFORCE_CPU_UPLOAD -DQCOM_ICS_COMPAT -DQCOM_NO_SECURE_PLAYBACK
 COMMON_GLOBAL_CFLAGS += -DQCOM_ACDB_ENABLED -DLEGACY_QCOM_VOICE -DPOLL_CALL_STATE -DUSE_QMI
-#COMMON_GLOBAL_CFLAGS += -DLEGACY_QCOM_VOICE -DPOLL_CALL_STATE -DUSE_QMI
 TARGET_NO_HW_VSYNC := true
 BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
 BOARD_USE_SKIA_LCDTEXT := true
@@ -131,7 +130,9 @@ BOARD_EGL_CFG := device/lge/ms910/prebuilt/lib/egl/egl.cfg
 BOARD_HAS_LARGE_FILESYSTEM := true
 
 # HWComposer
-#BOARD_USES_HWCOMPOSER := true
+BOARD_USES_HWCOMPOSER := true
+
+#TARGET_USES_ION := true
 
 # Bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
@@ -163,7 +164,6 @@ TW_INTERNAL_STORAGE_MOUNT_POINT := "emmc"
 TW_EXTERNAL_STORAGE_PATH := "/sdcard"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
 TW_NO_REBOOT_BOOTLOADER := true
-
 
 # Insecure boot
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0

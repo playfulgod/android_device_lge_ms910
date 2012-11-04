@@ -83,6 +83,7 @@ lib/libreference-ril.so
 lib/libril-qcril-hook-oem.so
 lib/libril-qc-1.so
 lib/libril-qc-qmi-1.so
+lib/liblte-ril.so
 lib/libdiag.so
 lib/liboncrpc.so
 lib/libqmi.so

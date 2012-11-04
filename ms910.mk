@@ -1,5 +1,5 @@
+$(call inherit-product, build/target/product/full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-$(call inherit-product, vendor/cm/config/common.mk)
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
@@ -19,7 +19,7 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
-$(call inherit-product, build/target/product/full_base_telephony.mk)
+$(call inherit-product, vendor/cm/config/common_full.mk)
 
 # use high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi
@@ -41,7 +41,8 @@ PRODUCT_PACKAGES += \
     hdmid \
     copybit.msm7x30 \
     gralloc.msm7x30 \
-    hwcomposer.msm7x30
+    hwcomposer.msm7x30 \
+	libgenlock
 
 # Sensors, GPS, Misc
 PRODUCT_PACKAGES += \
@@ -69,7 +70,8 @@ PRODUCT_PACKAGES += \
 	librs_jni \
 	libstagefrighthw \
 	LiveWallpapers \
-	LiveWallpapersPicker
+	LiveWallpapersPicker \
+	Screenshot
 
 #LLVM for RenderScript
 LLVM_ROOT_PATH := external/llvm
@@ -120,7 +122,6 @@ PRODUCT_COPY_FILES += \
 # HW
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/lib/hw/sensors.default.so:system/lib/hw/sensors.default.so 
-#    $(LOCAL_PATH)/prebuilt/lib/hw/lights.msm7k.so:system/lib/hw/lights.msm7k.so 
 #    $(LOCAL_PATH)/prebuilt/lib/hw/gralloc.msm7k.so:system/lib/hw/gralloc.msm7k.so \
 
 PRODUCT_COPY_FILES += \
@@ -163,6 +164,14 @@ PRODUCT_COPY_FILES += \
 # SDCard
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/root/vold.fstab:system/etc/vold.fstab
+
+## Wifi
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+	$(LOCAL_PATH)/prebuilt/etc/wl/nvram.txt:system/etc/wl/nvram.txt \
+	$(LOCAL_PATH)/prebuilt/etc/wl/rtecdc.bin:system/etc/wl/rtecdc.bin \
+	$(LOCAL_PATH)/prebuilt/etc/wl/rtecdc-apsta.bin:system/etc/wl/rtecdc-apsta.bin \
+	$(LOCAL_PATH)/prebuilt/etc/wl/rtecdc-mfgtest.bin:system/etc/wl/rtecdc-mfgtest.bin
 
 # Keychar & Keylayout
 PRODUCT_COPY_FILES += \

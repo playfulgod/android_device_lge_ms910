@@ -24,7 +24,7 @@ Now initialized the repository and pull the source (with my repos attached):
 
     $ cd ~/android/system/
     
-    $ repo init -u git://github.com/CyanogenMod/android.git -b ics
+    $ repo init -u git://github.com/CyanogenMod/android.git -b jellybean
     
     $ repo sync
 

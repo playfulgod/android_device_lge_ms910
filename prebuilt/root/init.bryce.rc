@@ -31,6 +31,7 @@ on early-fs
 	mkdir /mnt/sdcard 0775 system system
 	mount -t vfat /dev/block/mmcblk0p15 /mnt/sdcard
 	symlink /mnt/sdcard /sdcard
+
 	
 on init
 sysclktz 0
@@ -61,6 +62,10 @@ loglevel 3
 	mkdir /data/lgims/config 0770 system system
 	chown system system /data/lgims/config
 	chmod 0770 /data/lgims/config
+
+	# mount /data/anr
+	mkdir /data/anr 0755 root system
+	chown root system /data/anr
 
 # [START] LGE_USE_INTERNAL_FAT
     export EXTERNAL_ADD_STORAGE /mnt/sdcard/_ExternalSD
