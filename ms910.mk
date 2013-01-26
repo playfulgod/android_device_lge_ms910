@@ -8,6 +8,8 @@ $(call inherit-product-if-exists, vendor/lge/ms910/ms910-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 LOCAL_KERNEL := $(LOCAL_PATH)/kernel
 # Kernel Modules
@@ -27,22 +29,20 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-# Init files
+# Ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/root/init.bryce.rc:root/init.bryce.rc \
     $(LOCAL_PATH)/prebuilt/root/ueventd.bryce.rc:root/ueventd.bryce.rc \
     $(LOCAL_PATH)/prebuilt/root/init.bryce.sh:root/init.bryce.sh \
     $(LOCAL_PATH)/prebuilt/root/default.prop:root/default.prop \
     $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
-#	$(LOCAL_PATH)/prebuilt/root/init.rc:root/init.rc \
 
 # Display
 PRODUCT_PACKAGES += \
-    hdmid \
     copybit.msm7x30 \
     gralloc.msm7x30 \
     hwcomposer.msm7x30 \
-	libgenlock
+    libgenlock
 
 # Sensors, GPS, Misc
 PRODUCT_PACKAGES += \
@@ -78,20 +78,21 @@ LLVM_ROOT_PATH := external/llvm
 
 # Audio
 PRODUCT_PACKAGES += \
-    audio.a2dp.default \
     audio_policy.msm7x30 \
     audio.primary.msm7x30 \
-    libaudioutils
+    audio.a2dp.default \
+	libaudioutils
 
-# Charger mode
-#PRODUCT_PACKAGES += \
-    charger \
-    charger_res_images
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/prebuilt/lib/libaudioalsa.so:obj/lib/libaudioalsa.so \
+	$(LOCAL_PATH)/prebuilt/lib/libaudioalsa.so:system/lib/libaudioalsa.so
 
+## Bluetooth
 PRODUCT_PACKAGES += \
-#    hwaddrs.ms910 \
-    hcitool \
-    hciconfig
+	hciattach \
+	hciconfig \
+	hcitool \
+	hdmid
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -122,7 +123,6 @@ PRODUCT_COPY_FILES += \
 # HW
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/lib/hw/sensors.default.so:system/lib/hw/sensors.default.so 
-#    $(LOCAL_PATH)/prebuilt/lib/hw/gralloc.msm7k.so:system/lib/hw/gralloc.msm7k.so \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/bin/BCM4329B1_002.002.023.0589.0634.hcd:system/bin/bcm4329.hcd \
@@ -201,7 +201,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/etc/init.qcom.coex.sh:system/etc/init.qcom.coex.sh \
     $(LOCAL_PATH)/prebuilt/etc/init.qcom.fm.sh:system/etc/init.fm.sh \
     $(LOCAL_PATH)/prebuilt/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh \
-    $(LOCAL_PATH)/prebuilt/etc/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh
+    $(LOCAL_PATH)/prebuilt/etc/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh \
+	$(LOCAL_PATH)/prebuilt/lib/libv8.so:obj/lib/libv8.so
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
