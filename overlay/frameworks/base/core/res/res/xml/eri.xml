@@ -3,10 +3,10 @@
     <CallPromptId Id="0" CallPromptText="CallPromptId0" />
     <CallPromptId Id="1" CallPromptText="CallPromptId1" />
     <CallPromptId Id="2" CallPromptText="CallPromptId2" />
-    <EriInfo RoamingIndicator="71" IconIndex="2" IconMode="0" EriText="Black Plague" CallPromptId="0" AlertId="0" />
+    <EriInfo RoamingIndicator="71" IconIndex="2" IconMode="0" EriText="" CallPromptId="0" AlertId="0" />
     <EriInfo RoamingIndicator="72" IconIndex="2" IconMode="0" EriText="Roaming" CallPromptId="0" AlertId="0" />
     <EriInfo RoamingIndicator="73" IconIndex="2" IconMode="0" EriText="TravelTalk Roaming" CallPromptId="0" AlertId="0" />
-    <EriInfo RoamingIndicator="74" IconIndex="2" IconMode="0" EriText="Black Plague" CallPromptId="0" AlertId="0" />
+    <EriInfo RoamingIndicator="74" IconIndex="2" IconMode="0" EriText="" CallPromptId="0" AlertId="0" />
     <EriInfo RoamingIndicator="75" IconIndex="2" IconMode="0" EriText="Traveling with TravelTalk" CallPromptId="0" AlertId="0" />
     <EriInfo RoamingIndicator="76" IconIndex="2" IconMode="0" EriText="Roaming with TravelTalk" CallPromptId="0" AlertId="0" />
     <EriInfo RoamingIndicator="77" IconIndex="2" IconMode="0" EriText="Extended Service" CallPromptId="0" AlertId="0" />
