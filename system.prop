@@ -41,7 +41,7 @@ ro.cdma.home.operator.alpha=MetroPCS
 ro.cdma.home.operator.numeric=311660
 
 ro.ril.disable.power.collapse=0
-wifi.interface=wlan0
+
 com.qc.hdmi_out=true
 ro.product.camera=bryce 
 

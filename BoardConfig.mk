@@ -17,7 +17,6 @@ TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp -march=armv7-a
 TARGET_BOARD_PLATFORM_FPU := neon
 BOARD_USES_ADRENO_200 := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
-#TARGET_PROVIDES_INIT_RC := true
 ARCH_ARM_HAVE_ARMV7A := true
 
 TARGET_BOOTLOADER_BOARD_NAME := bryce
@@ -42,17 +41,6 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1031798784
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1610612736
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-# Partition Info
-BOARD_DATA_DEVICE := /dev/block/mmcblk0p13
-BOARD_DATA_FILESYSTEM := ext4
-BOARD_SYSTEM_DEVICE := /dev/block/mmcblk0p12
-BOARD_SYSTEM_FILESYSTEM := ext4
-BOARD_CACHE_DEVICE := /dev/block/mmcblk0p6
-BOARD_CACHE_FILESYSTEM := ext4
-BOARD_SDCARD_DEVICE_PRIMARY := /dev/block/mmcblk0p14
-BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk0p15
-BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p1
-
 # Recovery
 TARGET_PREBUILT_RECOVERY_KERNEL := device/lge/ms910/recovery/recovery_kernel
 BOARD_CUSTOM_GRAPHICS := ../../../device/lge/ms910/recovery/graphics.c
@@ -70,17 +58,17 @@ WPA_SUPPLICANT_VERSION      := VER_0_8_X
 BOARD_WLAN_DEVICE           := bcm4329
 WIFI_DRIVER_FW_STA_PATH := "/system/etc/wl/rtecdc.bin"
 WIFI_DRIVER_FW_AP_PATH  := "/system/etc/wl/rtecdc_apsta.bin"
-WIFI_DRIVER_MODULE_ARG  := "firmware_path=/etc/firmware/rtecdc.bin nvram_path=/etc/wl/nvram.txt config_path=/data/misc/wifi/config"
+WIFI_DRIVER_MODULE_ARG  := "firmware_path=/etc/wl/rtecdc.bin nvram_path=/etc/wl/nvram.txt config_path=/data/misc/wifi/config"
 WIFI_DRIVER_MODULE_NAME := "wireless"
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wireless.ko"
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
-WIFI_DRIVER_HAS_LGE_SOFTAP := true
+WIFI_DRIVER_HAS_LGE_SOFTAP := false
 
 BOARD_CDMA_NETWORK := true
 
 # Audio & Bluetooth
 #TARGET_PROVIDES_LIBAUDIO := true
-#BOARD_USES_AUDIO_LEGACY := false
+BOARD_USES_AUDIO_LEGACY := false
 BOARD_USES_ALSA_AUDIO := true
 BOARD_COMBO_DEVICE_SUPPORTED := true
 BOARD_HAVE_BLUETOOTH := true
@@ -171,5 +159,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.debuggable=1
 ADDITIONAL_DEFAULT_PROPERTIES += persist.service.adb.enable=1
 ADDITIONAL_DEFAULT_PROPERTIES += ro.config.sec_storage=1
-ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.usb.config=mtp,adb
+ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.usb.config=mass_storage,adb
+ADDITIONAL_DEFAULT_PROPERTIES += EXTERNAL_STORAGE_MOUNT=/mnt/sdcard
+ADDITIONAL_DEFAULT_PROPERTIES += EXTERNAL_ADD_STORAGE_MOUNT=/mnt/sdcard/_ExternalSD
 
