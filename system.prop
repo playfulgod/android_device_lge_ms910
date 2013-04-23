@@ -1,11 +1,15 @@
 #
 #build props for LG Esteem MS910
 #
-#rild.libpath=/system/lib/libril-qc-1.so
-rild.libpath=/system/lib/libmultimode-ril.so
+
+service.adb.root=1
+
+rild.libpath=/system/lib/libril-qc-1.so
+#rild.libpath=/system/lib/libmultimode-ril.so
 rild.libargs=-d /dev/smd0
+ril.subscription.types=NV
 ro.telephony.ril_class=LGEQualcommUiccRIL
-ro.telephony.ril.v3=subscriptionFromSource,skipCdmaSubcription,icccardstatus,qcomuiccstack
+ro.telephony.ril.v3=facilitylock,datacall,icccardstatus,singlepdp,qcomuiccstack
 ro.telephony.default_network=8
 keyguard.no_require_sim=true
 DEVICE_PROVISIONED=1
@@ -33,17 +37,14 @@ persist.radio.no_wait_for_card=1
 ro.cdma.voicemail.number=mine
 
 ro.com.google.clientidbase=android-lge
-ro.com.google.clientidbase.ms=android-metropcs
+ro.com.google.clientidbase.ms=android-metropcs-us
 ro.com.google.clientidbase.gmm=android-lge
-ro.com.google.clientidbase.yt=android-metropcs
-ro.com.google.clientidbase.am=android-metropcs
-ro.cdma.home.operator.alpha=MetroPCS
-ro.cdma.home.operator.numeric=311660
+ro.com.google.clientidbase.yt=android-lge
+ro.com.google.clientidbase.am=android-lge
 
 ro.ril.disable.power.collapse=0
 
 com.qc.hdmi_out=true
-ro.product.camera=bryce 
 
 #
 lpa.decode=true
@@ -66,7 +67,6 @@ ro.qualcomm.bluetooth.dun=true
 ro.qualcomm.bluetooth.ftp=true
 
 # USB storage
-sys.usb.state=mass_storage,adb
 persist.sys.usb.config=mass_storage,adb
 
 ## Wifi
@@ -90,7 +90,6 @@ ro.product.camera=bryce
 ## system prop for sound exeption
 ro.lge.sound.case.exception=true
 
-
-
-
+## Screen config
+ro.sf.lcd_density=240
 

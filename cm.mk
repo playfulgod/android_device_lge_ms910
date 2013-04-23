@@ -2,7 +2,7 @@
 PRODUCT_RELEASE_NAME := LG Esteem 4G
 
 ## Specify phone tech before including full_phone
-$(call inherit-product, vendor/cm/config/cdma.mk)
+#$(call inherit-product, vendor/cm/config/cdma.mk)
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 800
@@ -22,3 +22,9 @@ PRODUCT_MODEL := LGMS910
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_CHARACTERISTICS := phone
 
+CDMA_CARRIER_ALPHA := MetroPCS
+CDMA_CARRIER_NUMERIC := 311660
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.cdma.home.operator.alpha=$(CDMA_CARRIER_ALPHA) \
+    ro.cdma.home.operator.numeric=$(CDMA_CARRIER_NUMERIC)

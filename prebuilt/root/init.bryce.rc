@@ -31,7 +31,9 @@ on early-fs
 	#mkdir /mnt/sdcard 0775 system system
 	#mount -t vfat /dev/block/mmcblk0p15 /mnt/sdcard
 	#symlink /mnt/sdcard /sdcard
-
+on early-init
+	export EXTERNAL_STORAGE /mnt/sdcard
+	mkdir /mnt/sdcard 0000 system system
 	
 on init
 sysclktz 0
@@ -208,7 +210,7 @@ service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c/data/misc/wi
 	disabled
 	oneshot
 	
-service dhcpcd /system/bin/dhcpcd -BKA wlan0  
+service dhcpcd /system/bin/dhcpcd -BKLG wlan0  
 	disabled
 	oneshot
 	
@@ -224,9 +226,9 @@ service wlp2pservice /system/bin/wlp2pservice
     disabled
     oneshot
 	
-service dhcpd /system/xbin/udhcpd -f
-	disabled
-	oneshot
+#service dhcpd /system/xbin/udhcpd -f
+#	disabled
+#	oneshot
 	
 service akmd2 /system/bin/akmd2
     user system

@@ -38,7 +38,17 @@ Getting my LG Esteem 4G LGMS910 repo
 
 	$ cd lge
 
-	$ git clone https://github.com/playfulgod/android_device_lge_ms910.git ms910
+	$ git clone https://github.com/playfulgod/android_device_lge_ms910.git -b jellybean ms910
+
+Getting my kernel source repo
+
+	$ cd ~/android/system/kernel
+
+	$ mkdir lge
+
+	$ cd lge
+
+	$ git clone https://github.com/playfulgod/android_kernel_lge_ms910.git -b jellybean ms910
 
 Extract necessary binaries and proprietary files 
 ------------------------------------------------
@@ -51,13 +61,17 @@ We will need to reuse some proprietary files from the stock ROM:
     
     $ ./extract-files.sh
 
-Building CM9
+or if you have a ROM zip handy you can copy it into the device tree and:
+
+	$ ./unzip-files.sh yourROM.zip
+
+Building CM10
 -------------
 Once thats done you can start compiling.
 
 Follow the aosp instructions on setting up the build environment. - http://source.android.com/source/download.html
 
-When the environment is setup, we need to grab a copy of Koush's ROM Manager and the Term.apk. This is necessary to build CM9.
+When the environment is setup, we need to grab a copy of Koush's ROM Manager and the Term.apk. This is necessary to build CM10.
 
     $ cd ~/android/system/vendor/cm
 
@@ -72,7 +86,7 @@ To build for the LG Esteem:
     $ . build/envsetup.sh && brunch ms910
 
 
-Installing CM9
+Installing CM10
 ---------------
 If the build was successful, you can now take the update zip found in out/target/product/ms910/ and flash using a custom recovery. Make sure to grab the latest Gapps to complete the experience.
 
