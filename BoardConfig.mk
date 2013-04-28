@@ -56,15 +56,13 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
 BOARD_WLAN_DEVICE           := bcm4329
-WIFI_DRIVER_FW_STA_PATH := "/system/etc/wl/rtecdc.bin"
-WIFI_DRIVER_FW_AP_PATH  := "/system/etc/wl/rtecdc_apsta.bin"
-WIFI_DRIVER_MODULE_ARG  := "firmware_path=/etc/wl/rtecdc.bin nvram_path=/etc/wl/nvram.txt config_path=/data/misc/wifi/config"
-WIFI_DRIVER_MODULE_NAME := "wireless"
-WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wireless.ko"
+WIFI_DRIVER_FW_STA_PATH 	:= "/system/etc/wl/rtecdc.bin"
+WIFI_DRIVER_FW_AP_PATH  	:= "/system/etc/wl/rtecdc_apsta.bin"
+WIFI_DRIVER_MODULE_ARG  	:= "firmware_path=/etc/wl/rtecdc.bin nvram_path=/etc/wl/nvram.txt config_path=/data/misc/wifi/config"
+WIFI_DRIVER_MODULE_NAME 	:= "wireless"
+WIFI_DRIVER_MODULE_PATH 	:= "/system/lib/modules/wireless.ko"
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
-WIFI_DRIVER_HAS_LGE_SOFTAP := false
-
-BOARD_CDMA_NETWORK := true
+WIFI_DRIVER_HAS_LGE_SOFTAP  := false
 
 BOARD_USES_LEGACY_RIL := true
 
@@ -145,20 +143,10 @@ BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 
 TARGET_OTA_ASSERT_DEVICE := ms910,MS910,bryce,lge_bryce
 
-## TWRP
-#DEVICE_RESOLUTION := 480x800
-#TW_DEFAULT_EXTERNAL_STORAGE := true
-#TW_NO_USB_STORAGE := true
-#TW_INTERNAL_STORAGE_PATH := "/emmc"
-#TW_INTERNAL_STORAGE_MOUNT_POINT := "emmc"
-#TW_EXTERNAL_STORAGE_PATH := "/sdcard"
-#TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
-#TW_NO_REBOOT_BOOTLOADER := true
-
 # Insecure boot
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.debuggable=1
 ADDITIONAL_DEFAULT_PROPERTIES += persist.service.adb.enable=1
 ADDITIONAL_DEFAULT_PROPERTIES += ro.config.sec_storage=1
-ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.usb.config=mass_storage,adb
+ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.usb.config=mass_storage

@@ -69,27 +69,15 @@ loglevel 3
 	mkdir /data/anr 0755 root system
 	chown root system /data/anr
 
-# [START] LGE_USE_INTERNAL_FAT
-#    export EXTERNAL_ADD_STORAGE /mnt/sdcard/_ExternalSD
-#    export ASEC_ADD_MOUNTPOINT /mnt/extasec
-#    export LOOP_ADD_MOUNTPOINT /mnt/extobb
-# [END] LGE_USE_INTERNAL_FAT
-# Backwards Compat - XXX: Going away in G*
-#    symlink /mnt/sdcard /sdcard
-# [START] LGE_USE_INTERNAL_FAT
-#    symlink /mnt/sdcard/_ExternalSD /sdcard/_ExternalSD
-# [END] LGE_USE_INTERNAL_FAT
-# [START] LGE_USE_INTERNAL_FAT
-#    mkdir /mnt/extsecure 0700 root root
-#    mkdir /mnt/extsecure/staging 0700 root root
-#    mkdir /mnt/extsecure/extasec 0700 root root
-# [END] LGE_USE_INTERNAL_FAT
-# [START] LGE_USE_INTERNAL_FAT
-#    mkdir /mnt/extasec	0000 root system
-#    mount tmpfs tmpfs /mnt/extasec mode=0755,gid=1000
-#    mkdir /mnt/extobb 0700 root system
-#    mount tmpfs tmpfs /mnt/extobb mode=0755,gid=1000
-# [END] LGE_USE_INTERNAL_FAT
+    export EXTERNAL_STORAGE /storage/sdcard
+
+# Backward compatibility
+    symlink /system/bin /bin
+
+# create mountpoints for storage
+    mkdir /storage 0111 system system
+    mkdir /storage/sdcard0 0000 system system
+    symlink /storage/sdcard0 /sdcard
 
 on boot
     ifup lo
@@ -209,27 +197,23 @@ service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c/data/misc/wi
 	group system wifi inet
 	disabled
 	oneshot
-	
+
 service dhcpcd /system/bin/dhcpcd -BKLG wlan0  
 	disabled
 	oneshot
-	
+
 on property:init.svc.wpa_supplicant=stopped
 	stop dhcpcd
-	
+
 service mhotspot_server /system/bin/mhotspot_server /data/misc/wifi
 	user root
 	group root
 	socket mhotspot stream 666
-	
+
 service wlp2pservice /system/bin/wlp2pservice
     disabled
     oneshot
-	
-#service dhcpd /system/xbin/udhcpd -f
-#	disabled
-#	oneshot
-	
+
 service akmd2 /system/bin/akmd2
     user system
     group system

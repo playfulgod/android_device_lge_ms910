@@ -25,10 +25,9 @@
     </array>
 
     <!-- Do not translate. Defines the shutdown actions passed to the kernel.
-         The first item should be empty for regular reboot. -->
+The first item should be empty for regular reboot. -->
     <string-array name="shutdown_reboot_actions">
         <item></item>
         <item>recovery</item>
     </string-array>
-
 </resources>

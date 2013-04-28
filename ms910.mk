@@ -1,5 +1,5 @@
-$(call inherit-product, build/target/product/full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
@@ -18,11 +18,6 @@ else
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
-$(call inherit-product, vendor/cm/config/common_full.mk)
-
 # use high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
@@ -32,6 +27,7 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/root/init.bryce.rc:root/init.bryce.rc \
+    $(LOCAL_PATH)/prebuilt/root/init.bryce.usb.rc:root/init.bryce.usb.rc \
     $(LOCAL_PATH)/prebuilt/root/ueventd.bryce.rc:root/ueventd.bryce.rc \
     $(LOCAL_PATH)/prebuilt/root/init.bryce.sh:root/init.bryce.sh \
     $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
@@ -113,8 +109,7 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
 	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
 	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-	frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-	frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml
+	frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml
 
 # HW
 PRODUCT_COPY_FILES += \
@@ -164,23 +159,20 @@ PRODUCT_COPY_FILES += \
 ## Wifi
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-	$(LOCAL_PATH)/prebuilt/bin/wpa_supplicant:system/bin/wpa_supplicant \
 	$(LOCAL_PATH)/prebuilt/etc/wl/nvram.txt:system/etc/wl/nvram.txt \
 	$(LOCAL_PATH)/prebuilt/etc/wl/rtecdc.bin:system/etc/wl/rtecdc.bin \
 	$(LOCAL_PATH)/prebuilt/etc/wl/rtecdc-apsta.bin:system/etc/wl/rtecdc-apsta.bin \
 	$(LOCAL_PATH)/prebuilt/etc/wl/rtecdc-mfgtest.bin:system/etc/wl/rtecdc-mfgtest.bin
+#	$(LOCAL_PATH)/prebuilt/bin/wpa_supplicant:system/bin/wpa_supplicant \
 
 PRODUCT_PACKAGES += \
+	wpa_supplicant \
 	wpa_cli \
 	hostapd \
 	hostapd_cli
 
-# Keychar & Keylayout
+#Keylayout
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keychars/bryce-keypad.kcm.bin:system/usr/keychars/bryce-keypad.kcm.bin \
-    $(LOCAL_PATH)/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
-    $(LOCAL_PATH)/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
-    $(LOCAL_PATH)/keychars/touch_keypad.kcm.bin:system/usr/keychars/touch_keypad.kcm.bin \
     $(LOCAL_PATH)/keylayout/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
     $(LOCAL_PATH)/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
     $(LOCAL_PATH)/keylayout/Broadcom_Bluetooth_HID.kl:system/usr/keylayout/Broadcom_Bluetooth_HID.kl \
@@ -208,13 +200,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
 
+
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 PRODUCT_DEFAULT_LANGUAGE := en_US
 PRODUCT_DEFAULT_REGION := US
-
-# Radio
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.use_data_netmgrd=true \
-    ro.config.ehrpd=true \
-    ro.ril.shutdown=true

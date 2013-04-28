@@ -36,12 +36,6 @@ persist.radio.no_wait_for_card=1
 
 ro.cdma.voicemail.number=mine
 
-ro.com.google.clientidbase=android-lge
-ro.com.google.clientidbase.ms=android-metropcs-us
-ro.com.google.clientidbase.gmm=android-lge
-ro.com.google.clientidbase.yt=android-lge
-ro.com.google.clientidbase.am=android-lge
-
 ro.ril.disable.power.collapse=0
 
 com.qc.hdmi_out=true
