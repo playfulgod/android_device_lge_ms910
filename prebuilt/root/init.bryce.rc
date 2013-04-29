@@ -7,6 +7,7 @@
 
 #on fs
 on early-fs
+	persist.usb.config=usbstorage,adb
 	write /dev/bootprog 1
 	
 	# mount /system
@@ -25,15 +26,6 @@ on early-fs
 	# mount /persist
 	mkdir /persist 0771 system system
 	mount ext4 /dev/block/mmcblk0p5 /persist nosuid nodev -o data=ordered
-	
-	# mount internal SD card
-	#mkdir /mnt 0775 root system
-	#mkdir /mnt/sdcard 0775 system system
-	#mount -t vfat /dev/block/mmcblk0p15 /mnt/sdcard
-	#symlink /mnt/sdcard /sdcard
-on early-init
-	export EXTERNAL_STORAGE /mnt/sdcard
-	mkdir /mnt/sdcard 0000 system system
 	
 on init
 sysclktz 0
@@ -232,4 +224,3 @@ service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p10 /dev/block/mmc
 
 on property:ro.emmc=1
     start rmt_storage
-	

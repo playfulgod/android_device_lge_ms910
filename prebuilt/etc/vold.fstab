@@ -40,6 +40,6 @@
 ##dev_mount sdcard /mnt/sdcard auto /devices/platform/msm_sdcc.4/mmc_host /devices/platform/msm_sdcc.2/mmc_host
 ##dev_mount sdcard /mnt/sdcard 15 /devices/platform/goldfish_mmc.0 /devices/platform/msm_sdcc.2/mmc_host/mmc1
 ##dev_mount extsdcard /mnt/sdcard/_ExternalSD auto /devices/platform/goldfish_mmc.1 /devices/platform/msm_sdcc.4/mmc_host/mmc3
-dev_mount sdcard /mnt/sdcard auto /devices/platform/msm_sdcc.2/mmc_host/mmc1
-dev_mount extsdcard /mnt/sdcard/_ExternalSD auto /devices/platform/msm_sdcc.4/mmc_host/mmc3
+dev_mount sdcard /storage/sdcard0 auto /devices/platform/msm_sdcc.2/mmc_host/mmc1
+dev_mount extsdcard /storage/sdcard1 auto /devices/platform/msm_sdcc.4/mmc_host/mmc3
 #[STAR eMMC migration]
