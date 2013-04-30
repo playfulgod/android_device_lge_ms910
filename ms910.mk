@@ -77,11 +77,13 @@ PRODUCT_PACKAGES += \
     audio_policy.msm7x30 \
     audio.primary.msm7x30 \
     audio.a2dp.default \
-	libaudioutils
+	libaudioutils \
+    libaudioalsa
 
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/prebuilt/lib/libaudioalsa.so:obj/lib/libaudioalsa.so \
-	$(LOCAL_PATH)/prebuilt/lib/libaudioalsa.so:system/lib/libaudioalsa.so
+
+#PRODUCT_COPY_FILES += \
+#	$(LOCAL_PATH)/prebuilt/lib/libaudioalsa.so:obj/lib/libaudioalsa.so \
+#	$(LOCAL_PATH)/prebuilt/lib/libaudioalsa.so:system/lib/libaudioalsa.so
 
 ## Bluetooth
 PRODUCT_PACKAGES += \
@@ -163,7 +165,6 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/etc/wl/rtecdc.bin:system/etc/wl/rtecdc.bin \
 	$(LOCAL_PATH)/prebuilt/etc/wl/rtecdc-apsta.bin:system/etc/wl/rtecdc-apsta.bin \
 	$(LOCAL_PATH)/prebuilt/etc/wl/rtecdc-mfgtest.bin:system/etc/wl/rtecdc-mfgtest.bin
-#	$(LOCAL_PATH)/prebuilt/bin/wpa_supplicant:system/bin/wpa_supplicant \
 
 PRODUCT_PACKAGES += \
 	wpa_supplicant \
@@ -195,11 +196,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh \
     $(LOCAL_PATH)/prebuilt/etc/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh \
 	$(LOCAL_PATH)/prebuilt/lib/libv8.so:obj/lib/libv8.so
-
-# APNS
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
-
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 

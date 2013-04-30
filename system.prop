@@ -5,37 +5,9 @@
 service.adb.root=1
 
 rild.libpath=/system/lib/libril-qc-1.so
-#rild.libpath=/system/lib/libmultimode-ril.so
-rild.libargs=-d /dev/smd0
-ril.subscription.types=NV
 ro.telephony.ril_class=LGEQualcommUiccRIL
-ro.telephony.ril.v3=facilitylock,datacall,icccardstatus,singlepdp,qcomuiccstack
-ro.telephony.default_network=8
-keyguard.no_require_sim=true
-DEVICE_PROVISIONED=1
 telephony.lteOnCdmaDevice=1
-ro.config.svlte1x=true
-ro.ril.enable.dtm = 0
-ro.ril.gprsclass=10
-ro.ril.hsxpa=1
-ro.ril.disable.power.collapse = 1
-persist.radio.add_power_save=1
-persist.radio.snapshot_disabled=1
-persist.radio.apm_sim_not_pwdn=1
-persist.gps.qmienabled=true
-ro.telephony.call_ring.multiple=0
-ro.ril.transmitpower=true
-ro.use_data_netmgrd=true
-persist.data_netmgrd_nint=16
-persist.data_netmgrd_mtu=1428
-persist.cne.UseCne=false
-
-# Taken from d2vzw
-ro.cdma.subscribe_on_ruim_ready=true
-persist.radio.no_wait_for_card=1
-
 ro.cdma.voicemail.number=mine
-
 ro.ril.disable.power.collapse=0
 
 com.qc.hdmi_out=true
@@ -43,12 +15,6 @@ com.qc.hdmi_out=true
 #
 lpa.decode=true
 ro.hdmi.enable=true
-
-# system props for the data modules
-#
-persist.telephony.support_ipv4=true
-persist.telephony.support_ipv6=false
-ro.use_data_netmgrd=true
 
 #
 # system props for SD card emulation of emmc partition
@@ -64,19 +30,18 @@ ro.qualcomm.bluetooth.ftp=true
 persist.sys.usb.config=mass_storage,adb
 
 ## Wifi
-wifi.supplicant_scan_interval=20
+wifi.supplicant_scan_interval=120
 wifi.interface=wlan0
 
 ## Bluetooth
 ro.bt.bdaddr_path=/data/misc/bd_addr
 
-## opengles 2.0
-ro.opengles.version=131072
-
 ## audio
 persist.audio.handset.mic=digital
 persist.audio.fluence.mode=endfire
 persist.audio.vr.enable=false
+ro.config.vc_call_vol_steps=8
+ro.config.vc_call_vol_default=6
 
 ## camera
 ro.product.camera=bryce

@@ -35,11 +35,14 @@
 ## <sysfs_path> - List of sysfs paths to source devices
 ######################
 
-#[STAR eMMC migration]
 # LG_FW_SDCARD
 ##dev_mount sdcard /mnt/sdcard auto /devices/platform/msm_sdcc.4/mmc_host /devices/platform/msm_sdcc.2/mmc_host
 ##dev_mount sdcard /mnt/sdcard 15 /devices/platform/goldfish_mmc.0 /devices/platform/msm_sdcc.2/mmc_host/mmc1
 ##dev_mount extsdcard /mnt/sdcard/_ExternalSD auto /devices/platform/goldfish_mmc.1 /devices/platform/msm_sdcc.4/mmc_host/mmc3
-dev_mount sdcard /storage/sdcard0 auto /devices/platform/msm_sdcc.2/mmc_host/mmc1
-dev_mount extsdcard /storage/sdcard1 auto /devices/platform/msm_sdcc.4/mmc_host/mmc3
-#[STAR eMMC migration]
+#dev_mount sdcard /mnt/sdcard auto /devices/platform/msm_sdcc.2/mmc_host/mmc1
+#dev_mount extsdcard /mnt/sdcard/_ExternalSD auto /devices/platform/msm_sdcc.4/mmc_host/mmc3
+
+# LGE_CHANGE For MTP
+dev_mount sdcard1 /storage/sdcard1 auto /devices/platform/msm_sdcc.2/mmc_host/mmc1
+dev_mount sdcard1 /mnt/external_sd auto /devices/platform/msm_sdcc.4/mmc_host/mmc3
+
