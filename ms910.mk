@@ -27,7 +27,6 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/root/init.bryce.rc:root/init.bryce.rc \
-    $(LOCAL_PATH)/prebuilt/root/init.bryce.usb.rc:root/init.bryce.usb.rc \
     $(LOCAL_PATH)/prebuilt/root/ueventd.bryce.rc:root/ueventd.bryce.rc \
     $(LOCAL_PATH)/prebuilt/root/init.bryce.sh:root/init.bryce.sh \
     $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
@@ -77,13 +76,11 @@ PRODUCT_PACKAGES += \
     audio_policy.msm7x30 \
     audio.primary.msm7x30 \
     audio.a2dp.default \
-	libaudioutils \
-    libaudioalsa
+	libaudioutils
 
-
-#PRODUCT_COPY_FILES += \
-#	$(LOCAL_PATH)/prebuilt/lib/libaudioalsa.so:obj/lib/libaudioalsa.so \
-#	$(LOCAL_PATH)/prebuilt/lib/libaudioalsa.so:system/lib/libaudioalsa.so
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/prebuilt/lib/libaudioalsa.so:obj/lib/libaudioalsa.so \
+	$(LOCAL_PATH)/prebuilt/lib/libaudioalsa.so:system/lib/libaudioalsa.so
 
 ## Bluetooth
 PRODUCT_PACKAGES += \
@@ -156,7 +153,7 @@ PRODUCT_COPY_FILES += \
 
 # SDCard
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/root/vold.fstab:system/etc/vold.fstab
+    $(LOCAL_PATH)/prebuilt/etc/vold.fstab:system/etc/vold.fstab
 
 ## Wifi
 PRODUCT_COPY_FILES += \
